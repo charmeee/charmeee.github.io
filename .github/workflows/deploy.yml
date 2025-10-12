@@ -27,6 +27,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
+      - name: Setup home.html as index
+        run: |
+          cp home.html index.html
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
