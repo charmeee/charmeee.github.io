@@ -1,5 +1,134 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 313 at column 532: Invalid bytes in character encoding
-</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[Mj's Brain]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>Mj's Brain</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 13 Nov 2025 13:33:44 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 13 Nov 2025 13:32:38 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[빅분기 3유형_이론]]></title><description><![CDATA[np.log()p-value가 작을수록(예:&nbsp;0.05보다 작을 때) "이런 결과가 단순히 우연히 일어날 가능성은 매우 낮다"고 해석합니다. 그래서 보통 p-value가 0.05(5%)보다 작으면, 기존의 가정(귀무가설)을 기각하고, 연구자가 주장하는 대립가설을 채택합니
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 130 at column 440: Invalid bytes in character encoding
+</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[Mj's Brain]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>Mj's Brain</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 13 Nov 2025 13:57:30 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 13 Nov 2025 13:57:15 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[전정프 - 13장 스프링]]></title><description><![CDATA[스프링 프레임워크 특징
+스프링 부트
+IoC, DI, AOP
+실습 13.2, 13.3
+경량 컨테이너 생명주기를 관리 제어의 역행지원 제어권이 프레임워크에 있음, 필요에 따라 사용자 코드 호출 의존성 주입 지원
+관점지향 프로그래밍 지원 기존 프로그램 시작되는곳 필요한 객체 생성
+생성된 객체의 메서드 호출 스프링 컨테이너가 객체를 관리 제공
+코드에서 객체 생성 ㄴㄴ 객체 생성 선택에 관여하지 않고 어떻게 사용되는 지 알 수없음
+제어권한을 위임받은 객체(=컨테이너)에 의해 만들어지고 사용됨
+IOC구현 방법으로 DI 와 DL이 있음
+DI : 의존 관계를 Bean설정에 기반에 컨테이너가 자동으로 연결해줌 @Autowired 이용해서 빈주입 DL : 컨테이너에서 제공하는 API를 이용하여 직접 Bean을 찾음 의존성 커지고 코드 많아져서 ㄴㄴ 횡단 관심사 분리를 허용함으로써 모듈성을 증가시키는 것이 목적
+Advise로 정의 : 반복되는 추가 동작을 정의
+Pointcut : 어떤위치에 수행할 것인지 정의 스프링을 빠르고 간편하게 실행할 수있게해줌
+별도 설치없이 웹어플리케이션 구동 가능
+<img alt="../../daily/assets/스크린샷 2023-12-19 오전 10.31.45.png" src="daily/assets/스크린샷-2023-12-19-오전-10.31.45.png" target="_self">
+리액티브 스택 비동기 논블로킹 I/O 구조 사용
+리액티브 프로그래밍 비동기 I/O 기반
+데이터 흐름과 변화 전파에 중점을 둔 프로그래밍 서블릿 스택 동기 블로킹 I/O 구조 사용 하나의 요청 하나의 스레드. 모델과 뷰는 코드 그대로 사용가능할 정도로 유연한 구조 모델은 Spring Data JPA 사용하면 편함
+뷰는 JSP에 대한 종속 없음. MVC 기반 웹개발과 구조적으로 동일
+컨트롤러 직접구현 ㄴㄴ 특정 요청에 대한 처리 메서드만 작성하면 됨
+@Controller : 동작할 클래스 의미
+@RequetMapping : 요청 매핑
+get /web/hello에 동작하는 메서드<br>
+<img alt="../../daily/assets/스크린샷 2023-12-19 오전 10.54.00.png" src="daily/assets/스크린샷-2023-12-19-오전-10.54.00.png" target="_self"> REST API 구현하기 위해 사용하는 모듈
+JAX-RS 보다 간결함
+리턴 타입으로 사용하면 자동으로 json변환(JAX-RX도 같음)
+hello( ) 메서드: /api/hello?msg=Welcome
+hello2( ) 메서드: /api/hello/Welcome<br>
+<img alt="../../daily/assets/스크린샷 2023-12-19 오전 10.58.47.png" src="daily/assets/스크린샷-2023-12-19-오전-10.58.47.png" target="_self"> 컨트롤러
+@ResponseBody : 별도의 뷰가 아닌 리턴값을 직접 HTTP 응답 보디에 출력함<br>
+<img alt="../../daily/assets/스크린샷 2023-12-19 오전 11.03.34.png" src="daily/assets/스크린샷-2023-12-19-오전-11.03.34.png" target="_self">
+데이터를 포함한뷰 포워딩을 위해 Model객체추가<br>
+<img alt="../../daily/assets/스크린샷 2023-12-19 오전 11.05.22.png" src="daily/assets/스크린샷-2023-12-19-오전-11.05.22.png" target="_self">
+뷰<br>
+<img alt="../../daily/assets/스크린샷 2023-12-19 오전 11.06.22.png" src="daily/assets/스크린샷-2023-12-19-오전-11.06.22.png" target="_self">
+<br><img alt="../../daily/assets/스크린샷 2023-12-19 오전 11.06.59.png" src="daily/assets/스크린샷-2023-12-19-오전-11.06.59.png" target="_self"><br>
+<img alt="../../daily/assets/스크린샷 2023-12-19 오전 11.07.30.png" src="daily/assets/스크린샷-2023-12-19-오전-11.07.30.png" target="_self">]]></description><link>300-백엔드개발/전정프-13장-스프링.html</link><guid isPermaLink="false">300-백엔드개발/전정프 - 13장 스프링.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:55:08 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[전정프 - 12장 restapi]]></title><description><![CDATA[하나의 자원을 여러형태의 표현으로 전달 가능할 수 잇다는 개념
+rest클라이언트 : restapi를 사용하는프로그램
+클라-서버 프로그램 구조의 문제점 등장 : 프로토콜 자체적으로 정의해야함
+그래서 웹사용
+근데 웹은 화면 중심시스템임
+확장성 좋고 경량구조인 json주목
+restful 개념 조명 -&gt; 프런트엔드 중심개발 동사대신명사 사용(자원사용)
+상태 변경시 get,쿼리파라미터 사용 ㄴㄴ
+복수명사사용(집합형 데이터를 다루는 경우)
+관계형태의 표현에 하위리소스 사용
+에러 정보 제공( 머에러메세지나..그런것들..) Rest 형태를 개발할 수 있는 자바에서 만든 표준 규격(API)
+개발 단순화하는 인터페이스 java 애너테이션의 집합체
+스프링의 경우 RestController 사용 서비스 등록
+@ApplicationPath 이용 어떤 url을 사용할지 지정해야함
+해당 요청에대한 구현 클래스를 패키지로 등록해야함.<img alt="../../daily/assets/스크린샷 2023-12-19 오전 10.27.13.png" src="daily/assets/스크린샷-2023-12-19-오전-10.27.13.png" target="_self">
+API 클래스 구현
+별도의 클래스 상속 ㄴㄴ
+@메서드
+@PATH 로 시작경로 선택<br>
+@콘텐츠 응답타입 <img alt="../../daily/assets/스크린샷 2023-12-19 오전 10.25.22.png" src="daily/assets/스크린샷-2023-12-19-오전-10.25.22.png" target="_self">
+]]></description><link>300-백엔드개발/전정프-12장-restapi.html</link><guid isPermaLink="false">300-백엔드개발/전정프 - 12장 restapi.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:55:04 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[전정프 - 11장 특수 서블릿]]></title><description><![CDATA[
+컨테이너에서 발생하는 이벤트를 "모니터링"하다가 발생시 실행되는 특수 서플릿
+실행에 필요한 정보 제공 특정 상황에 자동으로 동작하는 프로그램을 구현할 때 사용(톰캣 시작종료 같이..)
+애너테이션 @WebListener 를 이용해 리스너임을 명시.
+생명주기 변화와 해당 스코프의 속성의 변화를 관찰함.
+-&gt; 이벤트 발생 -&gt; 리스너실행<img alt="../../daily/assets/Pasted image 20231219094330.png" src="daily/assets/pasted-image-20231219094330.png" target="_self" style="width: 400px; max-width: 100%;">
+초기화 매개변수와 연동 톰캣이 시작시, 초기화 매개변수를 읽어 특정 개체를 초기화한 후 서블릿이나 jsp에 제공 예제프로그램 등 배포시 샘플데이터 제공 DB가 필요한 경우 , 미리 DB와의 연결을 만들어두거나 테이블을 작성하는 등의 작업을자동으로 수행해서 추가적인 작업없이 프로그램 실행할 수 있음 복잡한 환경 설정 제공 프로그램에 필요한 여러 정보(외부서 주입하는 형태)가 고정되어있지않고 환경에 따라 변경되야하는 경우 이를 파일로부터 읽어와 JSP, 서블릿 등에 제공 특정 이벤트에 동작하는 기능 구현 애플리케이션 실행시 함께 동작해야하는 외부프로그램이나 서비스 동작유무를 확인하고 자동 실행 가능 ServletContext javax.servlet.ServletContextListener : 생명주기변화
+javax.servlet.ServletContextAttributeListener : 속성 변화 Session
+- javax.servlet.http.HttpSessionListener : 생명주기 변화
+- javax.servlet.http.HttpSessionAttributeListener : 속성<br>
+<img alt="../../daily/assets/Pasted image 20231219095311.png" src="daily/assets/pasted-image-20231219095311.png" target="_self" style="width: 400px; max-width: 100%;"> "사용자 요청"에 따라 서블릿이나 Jsp가 "실행전"에 response,request 객체의 조작이나 추가적인 처리가능
+보통 특정 요청에만 동작, 정해진 순서에 따라 동작
+@WebFilter("url 매핑정보")
+여러개 필터를 순서대로 적용하기 'web.xml'에 필터 등록해야함
+이경우에는 @WebFilter(filterName="filterOne")<br>
+<img alt="../../daily/assets/Pasted image 20231219101229.png" src="daily/assets/pasted-image-20231219101229.png" target="_self" style="width: 400px; max-width: 100%;"> <br><img alt="../../daily/assets/Pasted image 20231219100911.png" src="daily/assets/pasted-image-20231219100911.png" target="_self" style="width: 400px; max-width: 100%;">
+init : 초기화 작업
+doFilter : 해당 필터가 적용되었을 때의
+ServletRequest나 ServletResponse을 가로채 필요한 작업을 수행
+destory : 필터가 종료될 때의 작업
+인증
+로깅
+국제화
+한글 인코딩 처리
+]]></description><link>300-백엔드개발/전정프-11장-특수-서블릿.html</link><guid isPermaLink="false">300-백엔드개발/전정프 - 11장 특수 서블릿.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:55:01 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[전정프 - 9장 DB 와 JDBC]]></title><description><![CDATA[DDL, DML
+JDBC
+실습 9.2여러사람이 공유할 목적으로 체계화하여 통합 관리하는 데이터 집합
+DBMS : 데이터를 효과적으로 관리하고 운영하는 기능을 제공 (캐싱인덱싱 백업 권한관리등)
+관계형 데이터페이스 장점 다양한 용도로 사용 가능 높은성능
+일관성 보장
+정규화 ,구조화 되어잇음. 단점 데이터 구조변경 어려움
+빠른 속도 요구하는 단순처리 대응어려움 NoSQL 테이블 형태의 구조가 아님
+sql과 다를 수 있지만 별도의 쿼리언어나 구조는 존재
+장점 대용량처리 유리
+분산처리유리
+빠름
+유연함 단점 복잡한 데이터 관계표현시 중복데이터 발생가능 관계형데이터베이스 표준언어데이터 정의어
+테이블을 생성 삭제 구조변경
+생성 CREATE
+CREATE TABLE 이름 ( 컬럼이름 자료형(크기) 제약조건|속성) 수정 Alter
+ALTER TABLE 이름 [ ADD | ALTER | DROP] 칼럼명 자료형 제약조건 alter : 자료형, 제약조건을 바꿀 수있음 삭제 Drop
+DROP TABLE 이름 [RESTRICT | CASCADE] 테이블정보조회 SHOW 데이터 조작어
+SELECT
+<img alt="../../daily/assets/Pasted image 20231219023443.png" src="daily/assets/pasted-image-20231219023443.png" target="_self">
+INSERT INSERT INTO 테_이(칼럼이름) VALUES(칼럼데이터)
+컬럼에 데이터 추가
+auto increment 거나 not null 은 안체워도 ㄱㅊ UPDATE
+DELETE
+JOIN 문자관련 ASCII(아스키코드값), LENGTH(길이), CONCAT(문자열 결합), TRIM(양쪽 공백 제거), LOWER(소문자 변환), UPPER(대문자 변환), SUBSTRING(부분 선택) 날짜 기간함수 NOW(현재 날짜 시간), CURRENT_TIMESTAMP(현재 날짜 시간), DAYNAME(요일), PARSEDATETIME(문자열 포맷을 날짜 시간 정보로 변환) 집계함수 COUNT(레코드 수), SUM(칼럼값 더하기), AVG(칼럼값 평균). MAX(칼럼 최댓값), MIN(칼럼 최솟값) 자바 애플리케이션에서 다양한 데이터베이스와 표준화된 방법으로 연결하여 개발을 위해 설계된 인터페이스
+JDBC API이용해 SQL문으로 데이터 조작API : 개발자가 사용해서 코드를 작성하는거
+드라이버 : 회사제공<br>
+<img alt="../../daily/assets/Pasted image 20231219024244.png" src="daily/assets/pasted-image-20231219024244.png" target="_self" style="width: 300px; max-width: 100%;">
+JDBC 드라이버 로드 System.setProperty() jdbc.drivers라는 시스템환경변수에 등록된 내용으로 하는법 Class.forName 드라이버 이름으로 드라이버를 로드 데이터베이스 연결 java.sql.Connection DriverManager.getConnection( url,"아이디","비번") : 레퍼런스 가져옴 Statement 생성 java.sql.Statement
+java.sql.preparedStatement 이친구가 더조음
+Statement 상속받기 때문에 Statement메서드 모두사용가능
+SQL문을 미리 만들어두고 변수를 따로 입력<br>
+<img alt="../../daily/assets/Pasted image 20231219025219.png" src="daily/assets/pasted-image-20231219025219.png" target="_self"> SQL문 전송 java.sql.Statement executeQuery() SELECT 수행시 사용
+반환값은 ResultSet클래스, 결과 데이터 접근 방법을 제공 executeUpdate() UPDATE,DELETE
+반환값은 INT, 처리된 데이터 수를 반환 결과 받기 java.sql.ResultSet 순차적으로 접근할 수 있는 커서를 다룰 수 있게 함. 연결 해제 java.sql.Connection close()
+커넥션 뿐만 아니라 Statement나 ResultSet함께 종료해주는 것이 좋음. &lt;form method="post" action=" / jwbook / studentControl?action=insert"&gt; &lt;label&gt; 이름&lt;/ label&gt; &lt;input type="text" name="username" &gt;&lt;br&gt; &lt;label&gt;대학&lt;/label&gt; &lt;input type="text" name="univ" &gt;&lt;br&gt; &lt;label&gt; 생일&lt;/label&gt; &lt;input type="text" name="birth"&gt;&lt;br&gt; &lt;label&gt; 이메일&lt;/label&gt; &lt; input type="text" name="email" &gt; &lt;br&gt; &lt;button type="submit" &gt; 등록&lt; /button&gt;
+&lt;/ form&gt;
+/*Student.java - DO클래스*/
+public class Student { private int id; private String username; private String univ; private Date birth; private String email;
+//생성자
+//getter, setter
+} /*StudentDAO.java - DAO 클래스*/
+public class StudentDAO { Connection conn = null; PreparedStatement pstmt; final String JDBC_DRIVER = "org,h2.Driver"; final String JDBC_URL = "jdbc:h2:tcp://localhost/~/jwbookdb"; public void open(){ try{ Class.forName(JDBC_DRIVER); conn = DriverManager.getConnection(JDBC_URL,"id","pw"); }catch(Exception e){ e.printStactTrace(); } } public void close() { try{ pstmt.close(); conn.close(); } catch (SQLException e) { e.printStackTrace(); } ｝ public void insert(Student s) { open (); String sql ="INSERT INTO student(username, univ, birth, email) values(?,?,?,?)"; try { pstmt = conn.prepareStatement(sq1); pstmt.setString(1, s.getUsername()); pstmt.setString(2, s.getUniv()); pstmt.setDate(3, s.getBirth()); pstmt.setString(4, s.getEmail()); pstmt.executeUpdate(); } catch( Exception e ) { e.printStackTrace(); } finally { close(); } } public List‹Student&gt; getA11() { open(); List‹Student&gt; students = new ArrayList(); try { pstmt = conn.prepareStatement("select * from student"); ResultSet rs = pstmt.executeQuery(); while(rs.next()) { Student s = new Student); s.setId(rs.getInt("id")); s.setUsername(rs.getString("username")); s.setUniv(rs.getString("univ")); s.setBirth(rs.getDate("birth")); s.setEmail(rs.getString("email")); students.add(s); } } catch (Exception e) { e.printStackTrace(); } finally { close(); } return students; ｝
+}
+package ch09;
+import java.io.I0Exception;
+import org.apache.commons.beanutils.BeanUtils; @WebServlet ("/studentControl")
+public class StudentController extends HttpServlet { private static final long serialVersionUID = 1L; StudentDAO dao; public void init(ServletConfig config) throws ServletException { super.init(config); dao = new StudentDAO(); ｝ protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, I0Exception { request.setCharacterEncoding("utf-8"); String action = request.getParameter("action"); String view = ''; if(action == null) { getServletContext().getRequestDispatcher("/studentControl?action=list").forward (request, response); } else { switch(action) { case "list": view = list(request, response); break; case "insert": view = insert(request, response); break; } getServletContext().getRequestDispatcher("/ch09/"+view) .forward(request, response); } } public String list(HttpServletRequest request, HttpServletResponse response){ request setAttribute("students", dao.getAll()); return "studentInfo.jsp"; } public String insert(HttpServletRequest request, HttpServletResponse response) { Student s = new Student(); try { //맵을 bin객체로 BeanUtils.populate(s, request.getParameterMap()); } catch (Exception e) {e.printStackTrace(); } dao.insert(s); return list (request, response); }
+}
+]]></description><link>300-백엔드개발/전정프-9장-db-와-jdbc.html</link><guid isPermaLink="false">300-백엔드개발/전정프 - 9장 DB 와 JDBC.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:54:57 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[전정프 - 8장 MVC]]></title><description/></item><item><title><![CDATA[빅분기 3유형_이론]]></title><description><![CDATA[np.log()p-value가 작을수록(예:&nbsp;0.05보다 작을 때) "이런 결과가 단순히 우연히 일어날 가능성은 매우 낮다"고 해석합니다. 그래서 보통 p-value가 0.05(5%)보다 작으면, 기존의 가정(귀무가설)을 기각하고, 연구자가 주장하는 대립가설을 채택합니
 귀무 : 일반적으로 ㅇㅈ하는가설
 대립: 연구자가 주장하는 가설
 p-value : 끝범위0.05 미만이면 대립가설채택
@@ -311,7 +440,7 @@ reviews.groupby('price')['points'].max().sort_index()
 def func(row): # row는 Series, 행 전체 정보 사용 가능 return row['A'] + row['B'] df['new_col'] = df.apply(func, axis=1) # map
 import pandas as pd df = pd.DataFrame({'col': ['A', 'B', 'C', 'A']}) mapping = {'A': 2, 'B': 0, 'C': 1} df['col_encoded'] = df['col'].map(mapping) print(df)
 group
-<img alt="assets/빅분기 1유형-1750076194068.png" src="900-자격증/assets/빅분기-1유형-1750076194068.png" target="_self">]]></description><link>900-자격증/빅분기-1유형.html</link><guid isPermaLink="false">900-자격증/빅분기 1유형.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:30:22 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[sqld]]></title><description/></item><item><title><![CDATA[🏷️ 학교]]></title><description><![CDATA[학교 수업, 과제, 시험, 학업 관련 내용
+<img alt="assets/빅분기 1유형-1750076194068.png" src="900-자격증/assets/빅분기-1유형-1750076194068.png" target="_self">]]></description><link>900-자격증/빅분기-1유형.html</link><guid isPermaLink="false">900-자격증/빅분기 1유형.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:30:22 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[🏷️ 학교]]></title><description><![CDATA[학교 수업, 과제, 시험, 학업 관련 내용
 <a class="internal-link" data-href="../../700-컴퓨터과학/OS-1" href=".html" target="_self" rel="noopener nofollow">OS-1)컴퓨터 시스템</a>컴퓨터%20시스템.md)
 <br><a class="internal-link" data-href="../../700-컴퓨터과학/OS-2" href=".html" target="_self" rel="noopener nofollow">OS-2) 운영체제 기본과 구조</a>%20운영체제%20기본과%20구조.md)
 <br><a class="internal-link" data-href="../../700-컴퓨터과학/OS-3" href=".html" target="_self" rel="noopener nofollow">OS-3) 운영체제 연산</a>%20운영체제%20연산.md)
