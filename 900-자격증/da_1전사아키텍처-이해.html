@@ -1,0 +1,1010 @@
+<!DOCTYPE html><html lang="en-gb"><head>
+<title>DA_1전사아키텍처 이해</title>
+<base href="..">
+<meta name="pathname" content="900-자격증/da_1전사아키텍처-이해.html">
+<meta name="description" content="Mj's Brain - DA_1전사아키텍처 이해">
+<meta property="og:title" content="DA_1전사아키텍처 이해">
+<meta property="og:description" content="Mj's Brain - DA_1전사아키텍처 이해">
+<meta property="og:type" content="website">
+<meta property="og:url" content="900-자격증/da_1전사아키텍처-이해.html">
+<meta property="og:image" content="900-자격증/assets/데이터아키텍처-20250318212500188.png">
+<meta name="author" content="Jeon MinJi"><meta charset="UTF-8"><meta property="og:site_name" content="Mj's Brain"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-wasm-script" src="site-lib/scripts/graph-wasm.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-render-worker-script" src="site-lib/scripts/graph-render-worker.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="stylesheet" href="site-lib/styles/theme.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/supported-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/supported-plugins.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager show-inline-title show-ribbon highlightr-rounded h2-underline is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"><div id="left-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><div id="search-container"><div id="search-wrapper"><input enterkeyhint="search" type="search" spellcheck="false" placeholder="Search..."><div aria-label="Clear search" id="search-clear-button"></div></div></div></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="left-sidebar-content" class="leaf-content"><link itemprop="include" href="site-lib/html/file-tree-content.html"></div></div><script defer="">let ls = document.querySelector("#left-sidebar"); ls.classList.toggle("is-collapsed", window.innerWidth < 768); ls.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-left-width"));</script></div></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings allow-fold-lists show-indentation-guide show-properties" data-type="markdown"><style id="MJX-CHTML-styles">mjx-c.mjx-c200B::before{padding:0;content:""}mjx-c.mjx-c1D440.TEX-I::before{padding:.683em 1.051em 0 0;content:"M"}mjx-c.mjx-c41::before{padding:.716em .75em 0 0;content:"A"}mjx-c.mjx-c63::before{padding:.448em .444em .011em 0;content:"c"}mjx-c.mjx-c75::before{padding:.442em .556em .011em 0;content:"u"}mjx-c.mjx-c72::before{padding:.442em .392em 0 0;content:"r"}mjx-c.mjx-c61::before{padding:.448em .5em .011em 0;content:"a"}mjx-c.mjx-c79::before{padding:.431em .528em .204em 0;content:"y"}mjx-c.mjx-c54::before{padding:.677em .722em 0 0;content:"T"}mjx-c.mjx-c50::before{padding:.683em .681em 0 0;content:"P"}mjx-c.mjx-c4E::before{padding:.683em .75em 0 0;content:"N"}mjx-c.mjx-c46::before{padding:.68em .653em 0 0;content:"F"}mjx-c.mjx-c4D::before{padding:.683em .917em 0 0;content:"M"}mjx-c.mjx-c53::before{padding:.705em .556em .022em 0;content:"S"}mjx-c.mjx-c45::before{padding:.68em .681em 0 0;content:"E"}mjx-c.mjx-c7C::before{padding:.75em .278em .249em 0;content:"|"}mjx-c.mjx-c2211.TEX-S1::before{padding:.75em 1.056em .25em 0;content:"∑"}mjx-c.mjx-cAF::before{padding:.59em .5em 0 0;content:"¯"}mjx-c.mjx-c1D44D.TEX-I::before{padding:.683em .723em 0 0;content:"Z"}mjx-c.mjx-c1D707.TEX-I::before{padding:.442em .603em .216em 0;content:"μ"}mjx-c.mjx-c1D70E.TEX-I::before{padding:.431em .571em .011em 0;content:"σ"}mjx-mtext{display:inline-block;text-align:left}mjx-mspace{display:inline-block;text-align:left}mjx-c.mjx-c1D43C.TEX-I::before{padding:.683em .504em 0 0;content:"I"}mjx-c.mjx-c1D444.TEX-I::before{padding:.704em .791em .194em 0;content:"Q"}mjx-c.mjx-c33::before{padding:.665em .5em .022em 0;content:"3"}mjx-c.mjx-c20::before{padding:0 .25em 0 0;content:" "}mjx-c.mjx-c3A::before{padding:.43em .278em 0 0;content:":"}mjx-c.mjx-c3C::before{padding:.54em .778em .04em 0;content:"<"}mjx-c.mjx-c2E::before{padding:.12em .278em 0 0;content:"."}mjx-c.mjx-c35::before{padding:.666em .5em .022em 0;content:"5"}mjx-c.mjx-c3E::before{padding:.54em .778em .04em 0;content:">"}mjx-mover{display:inline-block;text-align:left}mjx-mover:not([limits=false]){padding-top:.1em}mjx-mover:not([limits=false])>*{display:block;text-align:left}mjx-c.mjx-c5E::before{padding:.694em .5em 0 0;content:"^"}mjx-c.mjx-c1D466.TEX-I::before{padding:.442em .49em .205em 0;content:"y"}mjx-c.mjx-c1D44A.TEX-I::before{padding:.683em 1.048em .022em 0;content:"W"}mjx-c.mjx-c30::before{padding:.666em .5em .022em 0;content:"0"}mjx-munderover{display:inline-block;text-align:left}mjx-munderover:not([limits=false]){padding-top:.1em}mjx-munderover:not([limits=false])>*{display:block}mjx-msubsup{display:inline-block;text-align:left}mjx-script{display:inline-block;padding-right:.05em;padding-left:.033em}mjx-script>mjx-spacer{display:block}mjx-c.mjx-cD7::before{padding:.491em .778em 0 0;content:"×"}mjx-c.mjx-c1D443.TEX-I::before{padding:.683em .751em 0 0;content:"P"}mjx-c.mjx-c1D450.TEX-I::before{padding:.442em .433em .011em 0;content:"c"}mjx-c.mjx-c1D459.TEX-I::before{padding:.694em .298em .011em 0;content:"l"}mjx-c.mjx-c2B::before{padding:.583em .778em .082em 0;content:"+"}mjx-c.mjx-c2211.TEX-S2::before{padding:.95em 1.444em .45em 0;content:"∑"}mjx-c.mjx-c28::before{padding:.75em .389em .25em 0;content:"("}mjx-c.mjx-c1D45D.TEX-I::before{padding:.442em .503em .194em 0;content:"p"}mjx-c.mjx-c29::before{padding:.75em .389em .25em 0;content:")"}mjx-msup{display:inline-block;text-align:left}mjx-mn{display:inline-block;text-align:left}mjx-c.mjx-c1D445.TEX-I::before{padding:.683em .759em .021em 0;content:"R"}mjx-c.mjx-c32::before{padding:.666em .5em 0 0;content:"2"}mjx-c.mjx-c1D446.TEX-I::before{padding:.705em .645em .022em 0;content:"S"}mjx-c.mjx-c1D447.TEX-I::before{padding:.677em .704em 0 0;content:"T"}mjx-c.mjx-c31::before{padding:.666em .5em 0 0;content:"1"}mjx-c.mjx-c1D438.TEX-I::before{padding:.68em .764em 0 0;content:"E"}mjx-container[jax=CHTML]{line-height:0}mjx-container [space="1"]{margin-left:.111em}mjx-container [space="2"]{margin-left:.167em}mjx-container [space="3"]{margin-left:.222em}mjx-container [space="4"]{margin-left:.278em}mjx-container [space="5"]{margin-left:.333em}mjx-container [rspace="1"]{margin-right:.111em}mjx-container [rspace="2"]{margin-right:.167em}mjx-container [rspace="3"]{margin-right:.222em}mjx-container [rspace="4"]{margin-right:.278em}mjx-container [rspace="5"]{margin-right:.333em}mjx-container [size="s"]{font-size:70.7%}mjx-container [size=ss]{font-size:50%}mjx-container [size=Tn]{font-size:60%}mjx-container [size=sm]{font-size:85%}mjx-container [size=lg]{font-size:120%}mjx-container [size=Lg]{font-size:144%}mjx-container [size=LG]{font-size:173%}mjx-container [size=hg]{font-size:207%}mjx-container [size=HG]{font-size:249%}mjx-container [width=full]{width:100%}mjx-box{display:inline-block}mjx-block{display:block}mjx-itable{display:inline-table}mjx-row{display:table-row}mjx-row>*{display:table-cell}mjx-mtext{display:inline-block}mjx-mstyle{display:inline-block}mjx-merror{display:inline-block;color:red;background-color:#ff0}mjx-mphantom{visibility:hidden}mjx-assistive-mml{top:0;left:0;clip:rect(1px,1px,1px,1px);user-select:none;position:absolute!important;padding:1px 0 0!important;border:0!important;display:block!important;width:auto!important;overflow:hidden!important}mjx-assistive-mml[display=block]{width:100%!important}mjx-math{display:inline-block;text-align:left;line-height:0;text-indent:0;font-style:normal;font-weight:400;font-size:100%;font-size-adjust:none;letter-spacing:normal;border-collapse:collapse;overflow-wrap:normal;word-spacing:normal;white-space:nowrap;direction:ltr;padding:1px 0}mjx-container[jax=CHTML][display=true]{display:block;text-align:center;margin:1em 0}mjx-container[jax=CHTML][display=true][width=full]{display:flex}mjx-container[jax=CHTML][display=true] mjx-math{padding:0}mjx-container[jax=CHTML][justify=left]{text-align:left}mjx-container[jax=CHTML][justify=right]{text-align:right}mjx-msub{display:inline-block;text-align:left}mjx-mi{display:inline-block;text-align:left}mjx-c{display:inline-block}mjx-utext{display:inline-block;padding:.75em 0 .2em}mjx-texatom{display:inline-block;text-align:left}mjx-mo{display:inline-block;text-align:left}mjx-stretchy-h{display:inline-table;width:100%}mjx-stretchy-h>*{display:table-cell;width:0}mjx-stretchy-h>*>mjx-c{display:inline-block;transform:scaleX(1)}mjx-stretchy-h>*>mjx-c::before{display:inline-block;width:initial}mjx-stretchy-h>mjx-ext{overflow:clip visible;width:100%}mjx-stretchy-h>mjx-ext>mjx-c::before{transform:scaleX(500)}mjx-stretchy-h>mjx-ext>mjx-c{width:0}mjx-stretchy-h>mjx-beg>mjx-c{margin-right:-.1em}mjx-stretchy-h>mjx-end>mjx-c{margin-left:-.1em}mjx-stretchy-v{display:inline-block}mjx-stretchy-v>*{display:block}mjx-stretchy-v>mjx-beg{height:0}mjx-stretchy-v>mjx-end>mjx-c{display:block}mjx-stretchy-v>*>mjx-c{transform:scaleY(1);transform-origin:left center;overflow:hidden}mjx-stretchy-v>mjx-ext{display:block;height:100%;box-sizing:border-box;border:0 solid transparent;overflow:visible clip}mjx-stretchy-v>mjx-ext>mjx-c::before{width:initial;box-sizing:border-box}mjx-stretchy-v>mjx-ext>mjx-c{transform:scaleY(500) translateY(.075em);overflow:visible}mjx-mark{display:inline-block;height:0}mjx-mfrac{display:inline-block;text-align:left}mjx-frac{display:inline-block;vertical-align:.17em;padding:0 .22em}mjx-frac[type="d"]{vertical-align:.04em}mjx-frac[delims]{padding:0 .1em}mjx-frac[atop]{padding:0 .12em}mjx-frac[atop][delims]{padding:0}mjx-dtable{display:inline-table;width:100%}mjx-dtable>*{font-size:2000%}mjx-dbox{display:block;font-size:5%}mjx-num{display:block;text-align:center}mjx-den{display:block;text-align:center}mjx-mfrac[bevelled]>mjx-num{display:inline-block}mjx-mfrac[bevelled]>mjx-den{display:inline-block}mjx-den[align=right],mjx-num[align=right]{text-align:right}mjx-den[align=left],mjx-num[align=left]{text-align:left}mjx-nstrut{display:inline-block;height:.054em;width:0;vertical-align:-.054em}mjx-nstrut[type="d"]{height:.217em;vertical-align:-.217em}mjx-dstrut{display:inline-block;height:.505em;width:0}mjx-dstrut[type="d"]{height:.726em}mjx-line{display:block;box-sizing:border-box;min-height:1px;height:.06em;border-top:.06em solid;margin:.06em -.1em;overflow:hidden}mjx-line[type="d"]{margin:.18em -.1em}mjx-mrow{display:inline-block;text-align:left}mjx-c::before{display:block;width:0}.MJX-TEX{font-family:MJXZERO,MJXTEX}.TEX-B{font-family:MJXZERO,MJXTEX-B}.TEX-I{font-family:MJXZERO,MJXTEX-I}.TEX-MI{font-family:MJXZERO,MJXTEX-MI}.TEX-BI{font-family:MJXZERO,MJXTEX-BI}.TEX-S1{font-family:MJXZERO,MJXTEX-S1}.TEX-S2{font-family:MJXZERO,MJXTEX-S2}.TEX-S3{font-family:MJXZERO,MJXTEX-S3}.TEX-S4{font-family:MJXZERO,MJXTEX-S4}.TEX-A{font-family:MJXZERO,MJXTEX-A}.TEX-C{font-family:MJXZERO,MJXTEX-C}.TEX-CB{font-family:MJXZERO,MJXTEX-CB}.TEX-FR{font-family:MJXZERO,MJXTEX-FR}.TEX-FRB{font-family:MJXZERO,MJXTEX-FRB}.TEX-SS{font-family:MJXZERO,MJXTEX-SS}.TEX-SSB{font-family:MJXZERO,MJXTEX-SSB}.TEX-SSI{font-family:MJXZERO,MJXTEX-SSI}.TEX-SC{font-family:MJXZERO,MJXTEX-SC}.TEX-T{font-family:MJXZERO,MJXTEX-T}.TEX-V{font-family:MJXZERO,MJXTEX-V}.TEX-VB{font-family:MJXZERO,MJXTEX-VB}mjx-stretchy-h mjx-c,mjx-stretchy-v mjx-c{font-family:MJXZERO,MJXTEX-S1,MJXTEX-S4,MJXTEX,MJXTEX-A!important}@font-face{font-family:MJXZERO;src:url("site-lib/fonts/mathjax_zero.woff") format("woff")}@font-face{font-family:MJXTEX;src:url("site-lib/fonts/mathjax_main-regular.woff") format("woff")}@font-face{font-family:MJXTEX-B;src:url("site-lib/fonts/mathjax_main-bold.woff") format("woff")}@font-face{font-family:MJXTEX-I;src:url("site-lib/fonts/mathjax_math-italic.woff") format("woff")}@font-face{font-family:MJXTEX-MI;src:url("site-lib/fonts/mathjax_main-italic.woff") format("woff")}@font-face{font-family:MJXTEX-BI;src:url("site-lib/fonts/mathjax_math-bolditalic.woff") format("woff")}@font-face{font-family:MJXTEX-S1;src:url("site-lib/fonts/mathjax_size1-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S2;src:url("site-lib/fonts/mathjax_size2-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S3;src:url("site-lib/fonts/mathjax_size3-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S4;src:url("site-lib/fonts/mathjax_size4-regular.woff") format("woff")}@font-face{font-family:MJXTEX-A;src:url("site-lib/fonts/mathjax_ams-regular.woff") format("woff")}@font-face{font-family:MJXTEX-C;src:url("site-lib/fonts/mathjax_calligraphic-regular.woff") format("woff")}@font-face{font-family:MJXTEX-CB;src:url("site-lib/fonts/mathjax_calligraphic-bold.woff") format("woff")}@font-face{font-family:MJXTEX-FR;src:url("site-lib/fonts/mathjax_fraktur-regular.woff") format("woff")}@font-face{font-family:MJXTEX-FRB;src:url("site-lib/fonts/mathjax_fraktur-bold.woff") format("woff")}@font-face{font-family:MJXTEX-SS;src:url("site-lib/fonts/mathjax_sansserif-regular.woff") format("woff")}@font-face{font-family:MJXTEX-SSB;src:url("site-lib/fonts/mathjax_sansserif-bold.woff") format("woff")}@font-face{font-family:MJXTEX-SSI;src:url("site-lib/fonts/mathjax_sansserif-italic.woff") format("woff")}@font-face{font-family:MJXTEX-SC;src:url("site-lib/fonts/mathjax_script-regular.woff") format("woff")}@font-face{font-family:MJXTEX-T;src:url("site-lib/fonts/mathjax_typewriter-regular.woff") format("woff")}@font-face{font-family:MJXTEX-V;src:url("site-lib/fonts/mathjax_vector-regular.woff") format("woff")}@font-face{font-family:MJXTEX-VB;src:url("site-lib/fonts/mathjax_vector-bold.woff") format("woff")}mjx-c.mjx-c1D44B.TEX-I::before{padding:.683em .852em 0 0;content:"X"}mjx-c.mjx-c1D45B.TEX-I::before{padding:.442em .6em .011em 0;content:"n"}mjx-c.mjx-c1D45C.TEX-I::before{padding:.441em .485em .011em 0;content:"o"}mjx-c.mjx-c1D45F.TEX-I::before{padding:.442em .451em .011em 0;content:"r"}mjx-c.mjx-c1D45A.TEX-I::before{padding:.442em .878em .011em 0;content:"m"}mjx-c.mjx-c3D::before{padding:.583em .778em .082em 0;content:"="}mjx-c.mjx-c1D465.TEX-I::before{padding:.442em .572em .011em 0;content:"x"}mjx-c.mjx-c2212::before{padding:.583em .778em .082em 0;content:"−"}mjx-c.mjx-c1D456.TEX-I::before{padding:.661em .345em .011em 0;content:"i"}mjx-c.mjx-c1D44E.TEX-I::before{padding:.441em .529em .01em 0;content:"a"}mjx-c.mjx-c1D467.TEX-I::before{padding:.442em .465em .011em 0;content:"z"}mjx-c.mjx-c1D452.TEX-I::before{padding:.442em .466em .011em 0;content:"e"}mjx-c.mjx-c1D460.TEX-I::before{padding:.442em .469em .01em 0;content:"s"}mjx-c.mjx-c1D461.TEX-I::before{padding:.626em .361em .011em 0;content:"t"}mjx-c.mjx-c1D451.TEX-I::before{padding:.694em .52em .01em 0;content:"d"}</style><pre class="frontmatter language-yaml" style="display: none;"><code class="language-yaml is-loaded"><span class="token key atrule">created</span><span class="token punctuation">:</span> <span class="token datetime number">2025-01-27</span>
+<span class="token key atrule">author</span><span class="token punctuation">:</span> Jeon MinJi
+<span class="token key atrule">source</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token key atrule">type</span><span class="token punctuation">:</span> 📌 개발노트
+<span class="token key atrule">topics</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">"[[📖 700 컴퓨터 과학]]"</span>
+  <span class="token punctuation">-</span> <span class="token string">"[[../100-데이터분석 &amp; AI/0_SubTopics/📚 103 데이터 분석,처리]]"</span>
+<span class="token key atrule">index</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">"[[🏷️ 자격증]]"</span>
+<span class="token key atrule">tags</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">"#DA"</span>
+  <span class="token punctuation">-</span> <span class="token string">"#전사아키텍처"</span>
+  <span class="token punctuation">-</span> <span class="token string">"#아키텍처"</span>
+  <span class="token punctuation">-</span> <span class="token string">"#프레임워크"</span></code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="DA_1전사아키텍처_이해_0">DA_1전사아키텍처 이해</h1><table style="border-radius: 4px; overflow: hidden;"><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>created</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;">Mon Jan 27 2025 09:00:00 GMT+0900 (Korean Standard Time)</td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>author</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;">Jeon MinJi</td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>source</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"></div></td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>type</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;">📌 개발노트</td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>topics</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"><a href="99-settings/1-topics/📖-700-컴퓨터-과학.html">📖 700 컴퓨터 과학</a>[[../100-데이터분석 &amp; AI/0_SubTopics/📚 103 데이터 분석,처리]]</div></td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>index</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"><a href="99-settings/2-index/🏷️-자격증.html">🏷️ 자격증</a></div></td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>tags</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"><a href="?query=tag:#DA" class="tag is-unresolved">##DA</a><a href="?query=tag:#전사아키텍처" class="tag is-unresolved">##전사아키텍처</a><a href="?query=tag:#아키텍처" class="tag is-unresolved">##아키텍처</a><a href="?query=tag:#프레임워크" class="tag is-unresolved">##프레임워크</a></div></td></tr></table></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-h2"><h2 data-heading="전사아키텍처(상)" dir="auto" class="heading" id="전사아키텍처(상)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사아키텍처(상)</h2></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>기업의 모습을 다양한 측며에서 분석하고 표현하여 이해하기 쉽도록 정보체계를구축하고활용</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>현제모습과 향후 추구할모습을 정의한 청사진</li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>목적
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>기업의 목적을 가장 잘 달성할 수 있는 인프라 구성</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>비지니스 , IT 유기적 연계</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>비지느스 환경 벼노하에 대한 신속한 대응</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>IT투자 대비 효과 최대화</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>IT관리 효율성 제고</li>
+</ul>
+</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사(엔터프라이즈)
+<ul class="has-list-bullet">
+<li data-line="10" dir="auto"><span class="list-bullet"></span>공동의 목표를 추구하기 위해 고객,상품 또는 서비스가 존재하고 이를 지원하기 위한 조직,자원,기술을 보유하며 필요한 업무 프로세스를 수행하는 조직의 집합체</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>다 : 1 가능</li>
+</ul>
+</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>아키텍처의 정의
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span>IEEE왈 구조, 사이의 관계, 설계, 원리와지침</li>
+</ul>
+</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>아키텍처 구성요소
+<ul class="has-list-bullet">
+<li data-line="15" dir="auto"><span class="list-bullet"></span>규칙</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span>모델</li>
+<li data-line="17" dir="auto"><span class="list-bullet"></span>계획</li>
+</ul>
+</li>
+<li data-line="18" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>추진현황
+<ul class="has-list-bullet">
+<li data-line="19" dir="auto"><span class="list-bullet"></span>범정부적 과제임 , therefore 개발해서 보급하고 있음</li>
+</ul>
+</li>
+<li data-line="20" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>EA 프로세스
+<ul class="has-list-bullet">
+<li data-line="21" dir="auto"><span class="list-bullet"></span>비전수립&gt; 구축, 관리 ,활용</li>
+</ul>
+</li>
+</ul></div><div class="el-h2"><h2 data-heading="전사아키텍처 프레임워크(중)" dir="auto" class="heading" id="전사아키텍처_프레임워크(중)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사아키텍처 프레임워크(중)</h2></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 활동에서 얻어지는 산출물을 분류,조직화,유지관리하기 위한 전체적인 틀을 정의하는 것.
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>BEFORE 전사아키텍처 정의, 전사아키텍처 프레임워크 선정</li>
+</ul>
+</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>여러 참조모델이 있음 
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span>참조 모델은 아키텍처를 수립할때 참조하는 추상활 모델</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="구성" dir="auto" class="heading" id="구성_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>구성</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>정책 : 기업이 전사 아키텍처 수립을 어떻게 할 것인지 방향을 정의한 것</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>정보 :  기업이 구축하는 전사 아키텍처 정보의 구체적인 모습</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>관리 : 구축된 전사 아키텍처를 어떻게 관리하고 활용할 것인가를 정의한 것<br>
+<span alt="assets/데이터아키텍처-20250318212500188.png" src="900-자격증/assets/데이터아키텍처-20250318212500188.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250318212500188.png" src="900-자격증/assets/데이터아키텍처-20250318212500188.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul></div><div class="el-h4"><h4 data-heading="정책" dir="auto" class="heading" id="정책_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정책</h4></div><div class="el-p"><p dir="auto">전사 아키텍처 구축 목적과 방향을 정의하는 것</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span><mark>아키택처 매트릭스</mark>
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>전사 아키텍처의 정보를 체계적으로 분류한 틀 </li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>일반적인 구분<br>
+- 뷰 : 정보 수준<br>
+- 비지니스,어플리케이션,데이터,기술 etc<br>
+- 관점 : 활용 계층<br>
+- 계획자, 책임자 , 설계자 ,개발자 등<br>
+<span alt="assets/데이터아키텍처-20250318212551529.png" src="900-자격증/assets/데이터아키텍처-20250318212551529.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250318212551529.png" src="900-자격증/assets/데이터아키텍처-20250318212551529.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul>
+</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 비전
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>수립을 통하여 기업이 궁극적으로 달성하고자 하는 모습</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>구축의 목표, 목표를 효과적으로 달성하기 위한 전략과 방향</li>
+</ul>
+</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 원칙
+<ul class="has-list-bullet">
+<li data-line="12" dir="auto"><span class="list-bullet"></span>전사 아키텍처 정보를 효율적으로 구축하고 기업의 목적에 맞게 전사 아키텍처 정보를 효과적으로 활용하기 위해서 조직원이 공유해야할 규범을 이야기함</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="정보" dir="auto" class="heading" id="정보_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정보</h4></div><div class="el-p"><p dir="auto">아키텍처 매트릭스에서 정의한 각 아키텍처 산출물에 대하여 현재 상태와 목표상태의 정보를 구축 &amp; 이행계획 수립</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>BEFORE THAT, 아키택처 정보의 영역(= 아키텍처 도메민)을 구분해야 함
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>아키텍처 도메인은 아키텍처 메트릭스에서 뷰관점으로 영역을 구분함</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>일반적인 도메인
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>비지니스 아키텍처
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>조직의 목적 입무를 지원하기 위해 수행하는 업무를 분석한걸 업무활동 단위로 분할해 표현한것</li>
+</ul>
+</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>데이터 아키텍처
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span>효과적인 업무처리 및 의사결정을 위해 어떤 정보가 사용되고 전달되어야하는지 표현한 것</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>전사 데이터 구성을 분류하고 데이터 모델을 정의하는 것</li>
+</ul>
+</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>어플리케이션 아키텍처
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>조직의 임무를 수행하는데 필요한 어플리케이션의 기능 및 이들과의 관계를 정의한것</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>기업의 어플리케이션 단위를 분류, 애플리케이션 간의 인터페이스를 정의</li>
+</ul>
+</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술 아키텍처
+<ul class="has-list-bullet">
+<li data-line="12" dir="auto"><span class="list-bullet"></span>위의 3가지 아키텍처를 지원하는데 필요한 정보기술 인프라요소 및 구조 , 이들간의 관계를 표현한 것</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span>전사의 기술영역을 분류, 표준 프로파일과 기술아키텍처 모델 정의</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>현행 아키텍처
+<ul class="has-list-bullet">
+<li data-line="15" dir="auto"><span class="list-bullet"></span>도메인별로 정의된 산출물에 대해 기업의 현재 상태를 정의한것</li>
+</ul>
+</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>목표 아키텍처
+<ul class="has-list-bullet">
+<li data-line="17" dir="auto"><span class="list-bullet"></span>도메인 별로 정의된 산출물에 대해 기업이 궁극적으로 달성하고자 하는 목표 아키텍처의 상태를 아키텍처 정보로 정의한거</li>
+</ul>
+</li>
+<li data-line="18" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 이행계획
+<ul class="has-list-bullet">
+<li data-line="19" dir="auto"><span class="list-bullet"></span>아키텍처 도메인 별로 현재모습에서 바람직한 목표 모습으로 이행하기 위한 이행전략과 이행계획을 정의한 것</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="관리" dir="auto" class="heading" id="관리_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>관리</h4></div><div class="el-p"><p dir="auto">정의된 아키텍처 정보를 지속적으로 유지 관리하고 효과적으로 활용하기 위해서 아키텍처 관리체계 정립, 시스템 구축이 필요<br>
+꾸준히 평가하고 개선해야함</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사아키텍처 관리 체계
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>구축된 전사 아키텍처를 유지,개선하기 위한 제도적 기반을 수립하는 것</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>전사 아키텍처 원칙을 준수하도록 확인하고 통제하기 위한 조직과 프로세스를 정의하는 것을 포함</li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사아키텍처 관리 시스템
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>정보 관리의 효율성을 제고하고 정보 공유활성화하기 위해 구축하는 정보시스템</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>일반적으로 전사 아키텍처 정보를 정의하는 모델링  도구, 정보를 저장하는 리포지터리, 사용자에게 배포하는 포털이있음</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 평가
+<ul class="has-list-bullet">
+<li data-line="7" dir="auto"><span class="list-bullet"></span>관리와 활용 수준을 제고학 위해서(윗것들을하기위해서) 평가를 해야함</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>이를 위해선 전사아키텍처 수준을 객관적이고 정확하게 평가할 수 있는 전사 아키텍처 성숙 모형이 필요</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="아키텍처 도메인 구성" dir="auto" class="heading" id="아키텍처_도메인_구성_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>아키텍처 도메인 구성</h3></div><div class="el-p"><p dir="auto">기업이 아키텍처 매트릭스를 어케 정의하냐에 따라 다름<br>
+아래는 도메인(== 뷰 ) 에 따른 모델들이다</p></div><div class="el-h4"><h4 data-heading="비지니스 아키텍처" dir="auto" class="heading" id="비지니스_아키텍처_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>비지니스 아키텍처</h4></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>계획자 관점
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 사업 모델
+<ul class="has-list-bullet">
+<li data-line="2" dir="auto"><span class="list-bullet"></span>전사의 범위를 정의하는 것에서 부터시작함</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>전사를 둘러썬 내외부의 이해관계자를 분석</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span>외부 객체와의 가치사슬을 분석하여 전사를 정의</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>like 전사 가치 사슬</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>조직 모델
+<ul class="has-list-bullet">
+<li data-line="7" dir="auto"><span class="list-bullet"></span>기업의 사업모델을 지원하기 위한 기업의 조직구조를 정의하는 것</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>비지니스를 수행하는 지리적 위치와 내부 객체를 도출하여 기업의 조직구조와 업무 분장을 정의</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>책임자 관점
+<ul class="has-list-bullet">
+<li data-line="10" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>업무 기능 모델
+<ul class="has-list-bullet">
+<li data-line="11" dir="auto"><span class="list-bullet"></span>기업의 업무 기능을 계층적으로 분할, 기능 내용을 정의</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span>분할 시 조직기준 ㄴㄴ, 업무기능의 유사성과 연관성을 기준으로 정의</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span>상의 업무기능은 하위업무기능의 합으로 표현가능해야함</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span>데이터와 어플리케이션의 상호비교를 통한 연관 분석이 이뤄짐</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>설계자 관점
+<ul class="has-list-bullet">
+<li data-line="16" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>프로세스 모델
+<ul class="has-list-bullet">
+<li data-line="17" dir="auto"><span class="list-bullet"></span>업무 기능을 상세화하여 계층적으로 프로세스를 분할하고 프로세스의 활동내용을 정의하는 것</li>
+<li data-line="18" dir="auto"><span class="list-bullet"></span>프로레스란 업무수행을 위해 정보를 입력받아 활동을 통해 산출물을 생성하는 과정임</li>
+<li data-line="19" dir="auto"><span class="list-bullet"></span>데이터와 어플리케이션의 상호비교를 통한 연관 분석이 이뤄짐</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="20" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개발자 관점
+<ul class="has-list-bullet">
+<li data-line="21" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>업무 메뉴얼
+<ul class="has-list-bullet">
+<li data-line="22" dir="auto"><span class="list-bullet"></span>업무 기능이나 프로세스별 업무내역을 상세히 기술한 자료</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="어플리케이션 아키텍처" dir="auto" class="heading" id="어플리케이션_아키텍처_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>어플리케이션 아키텍처</h4></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>계획자 관점
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 어플리케이션 영역 모델
+<ul class="has-list-bullet">
+<li data-line="2" dir="auto"><span class="list-bullet"></span>기업 업무 지원하는 app식별 &amp;app 특성 분석하여 전사 수준에서 구조화</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>app 기능과 특성에 따라 독립되어 구현되고 운영될 수 있는 app 정의</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span>app 관련 업무 ,데이터 IT특성을 감안하여 app을 그룹화하여 app영역을 정의</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>책임자 관점
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>어플리케이션 모델
+<ul class="has-list-bullet">
+<li data-line="7" dir="auto"><span class="list-bullet"></span>각 app이 지원하는 기능과 데이터 정보를 정의</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>app이 제공하는 서비스를 도출</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>app간의 연관관계 정의</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>app이나 서비스가 어느 업무 프로세스에서 사용되는지</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>개발 방법론에 의존적</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>설계자 관점
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>컴포넌트 모델, 클래스 모델
+<ul class="has-list-bullet">
+<li data-line="14" dir="auto"><span class="list-bullet"></span>실제 어플리케이션 개발에 필요한 설계정보를 관리하는 것</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span>컴포넌트 정의 , 클래스 정의, 데이터 흐름도(DFD)등이 해당</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span>개발 방법론에 영향을 많이 받음</li>
+<li data-line="17" dir="auto"><span class="list-bullet"></span>업무 영역별(정보계냐 운영계냐 이런거)로 다른 모델 쓸 수 있음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="18" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개발자 관점
+<ul class="has-list-bullet">
+<li data-line="19" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>프로그램 목록
+<ul class="has-list-bullet">
+<li data-line="20" dir="auto"><span class="list-bullet"></span>app의 최종단위인 프로그램에 대한 정보를 관리</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="데이터 아키텍처" dir="auto" class="heading" id="데이터_아키텍처_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>데이터 아키텍처</h4></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>계획자 관점
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 데이터 영역 모델
+<ul class="has-list-bullet">
+<li data-line="2" dir="auto"><span class="list-bullet"></span>상위 수준의 전사데이터 영역을 분류하여 표현한 것</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>ex) 상위 주제 영역 수준의 데이터 구성도
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>주제 영역 :  유사 데이터를 그룹화, 업무기능과 대응 되는 개념</li>
+</ul>
+</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>aka 개괄 데이터 모델</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>책임자 관점
+<ul class="has-list-bullet">
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개념 데이터 모델
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span>전사수준의 데이터 모델</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>단위 주제 영역 or 핵심 엔티티 정도를 표현한 모델</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>전체적으로 표현하는 기본틀</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>설계자 관점
+<ul class="has-list-bullet">
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>논리 데이터 모델
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span>개념데이터 모델을 기본정보로해서 업무요건을 충족시키기 위한 데이터의 상세구조를 논리적으로 구체화한것</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span>수집된 업무 관련 데이터정보 및 사전에 작성된 산출물을 기반으로 필요한 모든 엔티티를 도출</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span>식별자 속성 관계와 서브타입등을 정의</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span>엔티티 속성에 대한 명칭,정의 형식,규칙,코드 등을 전사적인 차원의 표준으로정의하여 관리해야함</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="17" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개발자 관점
+<ul class="has-list-bullet">
+<li data-line="18" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>물리 데이터 모델
+<ul class="has-list-bullet">
+<li data-line="19" dir="auto"><span class="list-bullet"></span>기술적환경과 특성을 고려하여 물리적 데이터 구조를 설계하고 데이터메이스 객체를 정의한 것</li>
+<li data-line="20" dir="auto"><span class="list-bullet"></span>논리 데이터모델 &gt; 물리적인데이터 구조</li>
+<li data-line="21" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>데이터 무결성을 보완하여 정의
+<ul class="has-list-bullet">
+<li data-line="22" dir="auto"><span class="list-bullet"></span>데이터 분산설계에 따른 데이터 무결성 등</li>
+</ul>
+</li>
+<li data-line="23" dir="auto"><span class="list-bullet"></span>추가적인 무결성 규칙을 정의</li>
+<li data-line="24" dir="auto"><span class="list-bullet"></span>데이터 접근향상을 위한 인덱스설계 비정규화 과정 등을 수행</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="기술 아키텍처" dir="auto" class="heading" id="기술_아키텍처_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술 아키텍처</h4></div><div class="el-p"><p dir="auto">위에서 정의된 요건을 지원하는 전사의 기술 인프라 체계를 정의하는 것<br>
+이식성,확장성을 강화하거나 독립성을 확보하거나 상호운용성을 강화하는 효과를 기대 가능<br>
+개별 기업에서도 기술참조 모델을 정의하는 것이 일반적</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>계획자 관점
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 기술 영역 모델
+<ul class="has-list-bullet">
+<li data-line="2" dir="auto"><span class="list-bullet"></span>기업이 업무활동에 필요한 정보기술의 영역을 상위수준에서 분류한 것</li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술 참조 모델
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>기업이 업무활동에 필요한 기능들을 수행하기 위해 요구되는 기술정보를 상위수준에서 논리적으로 분류한 틀</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 기술 영역 모델과 같은 범주로 볼 수 있다
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span>BUT 일반적인 표준을 최대한 수렴하여 정의하는 것이 특징<span alt="assets/데이터아키텍처-20250318232119266.png" src="900-자격증/assets/데이터아키텍처-20250318232119266.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250318232119266.png" src="900-자격증/assets/데이터아키텍처-20250318232119266.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>책임자 관점
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>표준 프로파일(SP)
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>기술 참조 모델에 명시된 서비스를 지원하기 위한 정보 기술 표준의 집합</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>기업의 모든 기술 아키텍처 요소들에 영향을 미치는 표준을 포함</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>표준들은 시스템의 이식성, 확장성,상호운영성,호환성을 제고하게됨</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>일반적으로는 기술 표준을 프로파일 대상
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span>최근엔 제품도 포함시킴</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>설계자 관점
+<ul class="has-list-bullet">
+<li data-line="15" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술 아키텍처 모델
+<ul class="has-list-bullet">
+<li data-line="16" dir="auto"><span class="list-bullet"></span>계획자 관점에서 정의한 모델에서 서비스 카테고리별로 아키텍처 패턴을 정의하거나 구성요소(SW, HW,NETWORK 등)에 대한 배치도를 정의</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="17" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개발자 관점
+<ul class="has-list-bullet">
+<li data-line="18" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술자원 목록, 제품목록
+<ul class="has-list-bullet">
+<li data-line="19" dir="auto"><span class="list-bullet"></span>표준 프로피일이나 기술아키텍처별로 관련된 기술자완목록, 제품목록을 기술아키텍처 정보로 관리</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="전사아키텍처 프레임워크 사례" dir="auto" class="heading" id="전사아키텍처_프레임워크_사례_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사아키텍처 프레임워크 사례</h3></div><div class="el-p"><p dir="auto">선진모델 참고하되 기업의 특성에 맞는것을만들어야함 (유연한 사고)</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>ZEAF (자크만 프레임워크)
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>5가지관점과 6사지 묘사방법으로 정의</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>대표적인 예임 </li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>FEAF (미연방정부)
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>8개 구성요소 , 4단계에 걸쳐 점진적으로 진행</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>마지막단계에 자크만 프레임워크 모델내용을 관리</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>세그먼트 접근법을 채택</li>
+</ul>
+</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>TEAF (미재무성)
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span>임마가 메트릭스</li>
+</ul>
+</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>DoDAF (미국방성)</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>TOGAF(오픈그룹)
+<ul class="has-list-bullet">
+<li data-line="11" dir="auto"><span class="list-bullet"></span>아키텍처 개발방법,기술참조 모델,표준정보기반(표준요약정보를 정의한 DB)</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span>빌딩 블록 정의에 의한 접근 방식 (= 구성단위의 문제해결 방식)</li>
+</ul>
+</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span>한국정보 AF()</li>
+</ul></div><div class="el-h2"><h2 data-heading="전사 아키텍처 참조모델(상)" dir="auto" class="heading" id="전사_아키텍처_참조모델(상)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 참조모델(상)</h2></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>아키텍처 구성요소를 식별하여 표준화한 것</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>기관이나 기업의 전사 아키텍처를 수립할 때 참조하는 추사오하된 모델</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개념적인 모델을 추상화, 구성요소를 재사용 가능한 방식으로 생성
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span>다양한 관점을 충족시킬수 있도록함</li>
+</ul>
+</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>wellknown 참조모델
+<ul class="has-list-bullet">
+<li data-line="5" dir="auto"><span class="list-bullet"></span>업종별 : 국방 ,공공</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>미연방정부 전사 아키텍처에서 처음 제시된 개념
+<ul class="has-list-bullet">
+<li data-line="7" dir="auto"><span class="list-bullet"></span>기준을 제시하기 위해 생김</li>
+</ul>
+</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술 참조모델(TRM)
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>가장 잘 활용 되고 있는 것</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>비교
+<ul class="has-list-bullet">
+<li data-line="11" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>미연방 
+<ul class="has-list-bullet">
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>지방주정부간의 연동을 고려한 접근
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span>내부 IT서비스를 위한 참조 모델로 활용하기 빡셈</li>
+</ul>
+</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span>프레임워크에서 업무,서비스,데이터와의 연관성이 높음</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>내외부 3계층 구조로 되어있음
+<ul class="has-list-bullet">
+<li data-line="16" dir="auto"><span class="list-bullet"></span>대내외 여녜설명이 용이함</li>
+</ul>
+</li>
+<li data-line="17" dir="auto"><span class="list-bullet"></span>많은 기술 체계를 폭넓게 수용</li>
+</ul>
+</li>
+<li data-line="18" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>오픈그룹
+<ul class="has-list-bullet">
+<li data-line="19" dir="auto"><span class="list-bullet"></span>어플리케이션 이식성 지원을 위해 필요한 기반 플랫폼의 구조와 서비스에 중점</li>
+<li data-line="20" dir="auto"><span class="list-bullet"></span>통신 기반의 인터페이스를 중시</li>
+<li data-line="21" dir="auto"><span class="list-bullet"></span>어플리케이션에 대한 상세한 분류 체계를 제공</li>
+<li data-line="22" dir="auto"><span class="list-bullet"></span>표준위주의 이론적접근으로 플랫폼 네트워크 통신기반에 대해서는 상세한 분류가 이뤄지지 않음</li>
+</ul>
+</li>
+<li data-line="23" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>가트너
+<ul class="has-list-bullet">
+<li data-line="24" dir="auto"><span class="list-bullet"></span>데스크톱 app, 엔터프라이즈 app 구분</li>
+<li data-line="25" dir="auto"><span class="list-bullet"></span>실용적인 분류체계 제공</li>
+<li data-line="26" dir="auto"><span class="list-bullet"></span>BUT 상세 분류 기준 미흡</li>
+</ul>
+</li>
+<li data-line="27" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정보화 진흥원
+<ul class="has-list-bullet">
+<li data-line="28" dir="auto"><span class="list-bullet"></span>상호연계성 운용성을 보장</li>
+<li data-line="29" dir="auto"><span class="list-bullet"></span>컴포넌트 기반 아키텍처 및 서비스 기반 아키텍처를 지향</li>
+<li data-line="30" dir="auto"><span class="list-bullet"></span>업무, 서비스, 데이터 참조모델 등과 함께 범정부 참조 모델중 하나</li>
+<li data-line="31" dir="auto"><span class="list-bullet"></span>국내의 정보화 환경을 고려하여 유망하고 안정된 기술 산정</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="32" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>참조 모델 구축 방법
+<ol>
+<li data-line="33" dir="auto"><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>공통적 특성을 추출하여 산업군에 맞게 범용적으로 만듬
+<ul class="has-list-bullet">
+<li data-line="34" dir="auto"><span class="list-bullet"></span>단점 : 요소간 경계불명확 , 정의 불명확</li>
+</ul>
+</li>
+<li data-line="35" dir="auto"><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>복잡하고 대표적인 기업 선정후 표본으로삶기
+<ul class="has-list-bullet">
+<li data-line="36" dir="auto"><span class="list-bullet"></span>단점 : 기업은 하위수준까지 공개안됨.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="법정부 EA참조 모델" dir="auto" class="heading" id="법정부_EA참조_모델_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>법정부 EA참조 모델</h3></div><div class="el-p"><p dir="auto"><span alt="assets/데이터아키텍처-20250318235038900.png" src="900-자격증/assets/데이터아키텍처-20250318235038900.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250318235038900.png" src="900-자격증/assets/데이터아키텍처-20250318235038900.png" target="_self" style="width: 300px; max-width: 100%;"></span><br>
+성과 말고든 도메인 별로 참조모델이 있음 그리고 그 나머지는 각 아키텍처에 기준이됨</p></div><div class="el-h4"><h4 data-heading="업무" dir="auto" class="heading" id="업무_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>업무</h4></div><div class="el-p"><p dir="auto">아키텍처 대상기관의 사업,업무 등을 전체적으로 분류,정의 하는 것<br>
+비지니스 아키텍처의 기준</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>독립적인 업무 기능을 중심으로 정의한 모델</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>업무 영역(목적 기준) &gt; 업무 단위 &gt; 세부업무 순으로 나눔 </li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정부 영역의 분류
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span>정책분야, 정책영역, 대중소기능 등 </li>
+</ul>
+</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span>일반 기업의 분류<br>
+- 사업영역, 업무 영역, 업무 기능<br>
+<span alt="assets/데이터아키텍처-20250319033016812.png" src="900-자격증/assets/데이터아키텍처-20250319033016812.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250319033016812.png" src="900-자격증/assets/데이터아키텍처-20250319033016812.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul></div><div class="el-h4"><h4 data-heading="서비스" dir="auto" class="heading" id="서비스_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>서비스</h4></div><div class="el-p"><p dir="auto">응용 서비스의 기능을 분류하고 정의<br>
+응용아키텍처의 기준</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>업무와 서비스 연계및 재사용을 촉진하고 중복개발을 방지하기 위함
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>이럴려면 단윌화, 통합된 분류체계를 제공해야함</li>
+</ul>
+</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>업무 및 조직에 독립적인 표준 서비스 분류체계</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>업계 정부간의 컴포넌트 개발, 축적 ,유통 활성화를 촉진 및 식별 용의<br>
+<span alt="assets/데이터아키텍처-20250319033038600.png" src="900-자격증/assets/데이터아키텍처-20250319033038600.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250319033038600.png" src="900-자격증/assets/데이터아키텍처-20250319033038600.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul></div><div class="el-h4"><h4 data-heading="데이터" dir="auto" class="heading" id="데이터_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>데이터</h4></div><div class="el-p"><p dir="auto">기관간에 교환되는 주요 데이터 요소를 분석하여  이를 정의하고 표준화<br>
+데이터 아키텍처의 기준</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>기관간의 공통 정보 파악과 활용을 지원하기 위함</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>표준화 재사용을 지우너하기 위한 범정부 데이터 분류  및 표준화 관리를 위한 기준과 체계를 정의</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>세부요소<br>
+- 범정부 데이터 모델<br>
+- 범정부에서 구축, 활용하고 잇는 데이터 식별 및 관계 도식화<br>
+- 데이터 분류<br>
+- 범정부의 데이터는 분류에 따라 그룹핑, 매핑<br>
+- 관리 검색에 용의<br>
+- 데이터 구조<br>
+- 스키마 생각하면됨, 소유주 항목정의 ,관계 요소정보 저장<br>
+- 데이터 요소에 대한 표준화 항목과 가이드 제시<br>
+- 데이터 교환<br>
+- 전송 프로토콜생각하면됨<br>
+- 데이터 관리<br>
+- 데이터 품질 보안 ,표준화 등의 유지를 위한 정책규칙프로세스 조직구조 등을 정의<br>
+<span alt="assets/데이터아키텍처-20250319033115568.png" src="900-자격증/assets/데이터아키텍처-20250319033115568.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250319033115568.png" src="900-자격증/assets/데이터아키텍처-20250319033115568.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul></div><div class="el-h4"><h4 data-heading="기술" dir="auto" class="heading" id="기술_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술</h4></div><div class="el-p"><p dir="auto">정보 기술을 분류 및 식별<br>
+기술아키텍처의 기준</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>업무와 서비스 구성요소의 전달과 교환, 구축을 지원해주는 표준, 명세, 기술 요소를 표현하기 위함</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>정보화 추진을 위한 기술을 식별,정의하고 관련 기술의 표준과 동향관리</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>재사용 제고 ,안전한 전달의 기반환경을 구축, 상호운영성을 확보</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>유사성 판단 기준으로도 사용 가능<br>
+<span alt="assets/데이터아키텍처-20250319033058539.png" src="900-자격증/assets/데이터아키텍처-20250319033058539.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250319033058539.png" src="900-자격증/assets/데이터아키텍처-20250319033058539.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul></div><div class="el-h4"><h4 data-heading="성과" dir="auto" class="heading" id="성과_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>성과</h4></div><div class="el-p"><p dir="auto">정보화 성과의 측정을 위한 항목과 지표 및 방법을 제시</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>성과 관리를 위한 구성요소와 관계를 정의</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>입출력 및 과정 최종성과간의 인과간계를 명확히 하여 계층과의 연계를 증진시킴</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>개선가능성을 파악</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>IT자원 효율적으로 관리<br>
+<span alt="assets/데이터아키텍처-20250319033721918.png" src="900-자격증/assets/데이터아키텍처-20250319033721918.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250319033721918.png" src="900-자격증/assets/데이터아키텍처-20250319033721918.png" target="_self" style="width: 300px; max-width: 100%;"></span><span alt="assets/데이터아키텍처-20250319034012021.png" src="900-자격증/assets/데이터아키텍처-20250319034012021.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처-20250319034012021.png" src="900-자격증/assets/데이터아키텍처-20250319034012021.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+</ul></div><div class="el-h2"><h2 data-heading="전사 아키텍처 구축(-)" dir="auto" class="heading" id="전사_아키텍처_구축(-)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 구축(-)</h2></div><div class="el-p"><p dir="auto">방향수립(프레임워크 정의 포함) &gt; 정보 구성정의 &gt; 정보 구축</p></div><div class="el-h3"><h3 data-heading="정보 구성 정의(중)" dir="auto" class="heading" id="정보_구성_정의(중)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정보 구성 정의(중)</h3></div><div class="el-p"><p dir="auto">전사 아키텍처 정보는 업무 구성요소 와 관계를 포함함</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>정보는 가능한 변한지 않는 구성요소를 도출하여 정의하는 것이 이상적<br>
+- 이익 &gt;&gt; 관리하는데 비용 이어야 하기 때문<br>
+아래 순서대로 이루어지는 것 같다.</li>
+</ul></div><div class="el-h4"><h4 data-heading="아키텍처 매트릭스 정의" dir="auto" class="heading" id="아키텍처_매트릭스_정의_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>아키텍처 매트릭스 정의</h4></div><div class="el-p"><p dir="auto">산출물과 구성하는 요소를 분류 하기 위함</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>모델과 원칙 정보를 통일된 시각으로 볼 수 있는 논리적인 틀</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>도메인의 산출물을 식별,정의하기 위한 논리적 체계를 정의</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>모든 구성요소 관계포함 ㄴㄴ</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>구성
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>2차원 매트릭스형태임</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>관점 : 의사결정 유형
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span>업무와 IT조직의 이해관계자를 식별</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>3-5단곈데 자세할수록 상세하게 관리</li>
+</ul>
+</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>뷰 : 아키텍처 정보 유형
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>특성이 비슷한 아키텍처 정보를 그룹화</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>메트릭스의 각셀에 산출물을 정의한다.<br>
+<span alt="assets/데이터아키텍처 1 전사아키텍처 이해-20250319035531727.png" src="900-자격증/assets/데이터아키텍처-1-전사아키텍처-이해-20250319035531727.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처 1 전사아키텍처 이해-20250319035531727.png" src="900-자격증/assets/데이터아키텍처-1-전사아키텍처-이해-20250319035531727.png" target="_self" style="width: 300px; max-width: 100%;"></span></li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>DB형태로 구축되어 지속적으로 갱신할라면 산출물을 구성요소단위로 분류하고 관계를 명확히해야함
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span>연관관계가 많을 수록 활용가치가 높아짐</li>
+</ul>
+</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>목적에 맞게 정의 되의 되었는지 확인 잘 해야함
+<ul class="has-list-bullet">
+<li data-line="15" dir="auto"><span class="list-bullet"></span>이걸로 커뮤니케이션하기 때문</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="참조 모델 정의" dir="auto" class="heading" id="참조_모델_정의_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>참조 모델 정의</h4></div><div class="el-p"><p dir="auto">기업의 기준모델로 정의할 참조 모델의 체계와 구조를 정의하고 컨텐츠를 구축</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>큰기업이나 정부가 참조 모델정의하면 조만한 기업들이 참고해서 전사아키텍처 구성요소의 타당성을 확인</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>체계적 분류, 표준화 &gt; 통합성, 중복 ㄴㄴ , 상호운용성향상 등을 목적으로 되어잇음</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>therefore 고대로 쓰지말고 참고만하셈ㅇㅇ</li>
+</ul></div><div class="el-h4"><h4 data-heading="전사 아키텍처 원칙 수립" dir="auto" class="heading" id="전사_아키텍처_원칙_수립_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 원칙 수립</h4></div><div class="el-p"><p dir="auto">목표 달성위해 구성원들이 공통적으로 지켜야할 규칙을 정</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>의사결정의 객관적 기준 제시 &gt; 효과적으로 업무 협조와 조정가능, 투명성제공</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>연결성 강화</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>구성요소
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span>원칙 : 원칙의 내용을 간략하게</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span>의미 : 원칙이 가지는 의미를 설명</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>근거 : 원칙이 채택된 원인과 배경</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>기대효과 : 원칙이 전사아키텍처 수립에 미치는 영향 및 기대효과</li>
+</ul>
+</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>범위에 따른 구분
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전체 적용 : 방향수립단계서 정의 ㄱㄴ(꼭그런건아닌듯?)
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>상반되는 지향점을 갖지 않도록해야함  </li>
+</ul>
+</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>아키텍처별 적용 : 아키텍처 메트릭스 결정이후에 정의 가능
+<ul class="has-list-bullet">
+<li data-line="11" dir="auto"><span class="list-bullet"></span>도메인 별로 원칙을 정의함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="정보 구축(상)" dir="auto" class="heading" id="정보_구축(상)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정보 구축(상)</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>아키텍처 메트릭스의 전범위에 걸처 수행하는게 바람직함</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>각셀의 산출물 기준으로 현제 모델,문서를 보완하여 현행화하는 작업수행</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>구축 방식
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>상향식
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>최하위에있는 구성요소 조사분석 &gt; 공통점파악</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>점점 추상화시킴</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>최상위 업무 분류의 수준 (레벨)이 다를 수 잇음(추상화정도가 다를듯)</li>
+</ul>
+</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>하양식
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span>점점 구체화시킴</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>일반적인 분류기준이나 목적에 따라 분류기준을 따름
+<ul class="has-list-bullet">
+<li data-line="10" dir="auto"><span class="list-bullet"></span>관점이 명확함</li>
+</ul>
+</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>업무가 누락되거나 어디에도 포함되지 않을 수 있음</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="현행 정보 구축" dir="auto" class="heading" id="현행_정보_구축_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>현행 정보 구축</h4></div><div class="el-p"><p dir="auto">상위 수준 업무 or 시스템에 대한 분류를 우선적으로 수행하는게조음<br>
+why? 그이후엔 병렬적으로 정보구축수행가능ㅋ</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>비지니스
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>도출된 업무 기능으로 조직 주고와 연계성을 파악</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>추훼 어플리케이션이나 데이터 연관관계 파악해서 상호 검증을 수행함</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>업무 기능 도출
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>상향식 : 단위 업무를 조사 후 유사성 기준으로 묶어 업무 기능 도출</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>하양식 : 가치 사슬 분석을 통해 최상위 업무기능을 도출</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>업무 프로세스 정의도 매한가지</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span>전사 사업모델 분석</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>조직 모델분석</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>업무 기능 모델 정의</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>프로세스 모델 정의</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span>업무 매뉴얼 파악</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>어플리케이션
+<ul class="has-list-bullet">
+<li data-line="14" dir="auto"><span class="list-bullet"></span>어플리케이션 구조, 서비스, 응용기능 등을 도출</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span>다른 구성 요소와의 연관관계를 분석하여 상호 간 정합성을 검증함</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span>업무 기능 분류를 기반으로 어플리케이션 분류 &amp; 연관관계 분석에서 시작</li>
+<li data-line="17" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="18" dir="auto"><span class="list-bullet"></span>전사 어플리케이션 영역 식별</li>
+<li data-line="19" dir="auto"><span class="list-bullet"></span>어플리케이션 모델 정의</li>
+<li data-line="20" dir="auto"><span class="list-bullet"></span>프로그램 목록 파악</li>
+<li data-line="21" dir="auto"><span class="list-bullet"></span>애플리케이션 원칙,표준 파악</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="22" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>데이터
+<ul class="has-list-bullet">
+<li data-line="23" dir="auto"><span class="list-bullet"></span>업무 기능과 어플리케이션과의 분석을 통하여 정확성 검증</li>
+<li data-line="24" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>상향식 : 각 시스템에서 사용하는 데이터 정보를 분석하여 데이터 모델로 정렬하여 표현
+<ul class="has-list-bullet">
+<li data-line="25" dir="auto"><span class="list-bullet"></span>데이터베이스의 물리 테이블에 대응되는 논리개체를 정의함 &gt; 논리개체를 주제별로 묶어 개념개체로 정의 &gt; 개념개체의 관계 정의</li>
+<li data-line="26" dir="auto"><span class="list-bullet"></span>실무자 수준의 정보를 구축할 경우 상향식이 더 적합</li>
+</ul>
+</li>
+<li data-line="27" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>하양식 : 기업의 업무수행을 위해 필요한 데이터 요건을 식별하여 데이터 모델로 표현
+<ul class="has-list-bullet">
+<li data-line="28" dir="auto"><span class="list-bullet"></span>의사결정,현황파악의 정보요건을 바탕으로 필요데이터 도출 &gt; 정보 요건을 상세화 하면서 세부 데이터 모델을 정의</li>
+<li data-line="29" dir="auto"><span class="list-bullet"></span>계획자 수준의 상위정보만 구축할경우 더 적합</li>
+</ul>
+</li>
+<li data-line="30" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="31" dir="auto"><span class="list-bullet"></span>전사 데이터 영역 식별</li>
+<li data-line="32" dir="auto"><span class="list-bullet"></span>개념, 논리 물리 데이터 모델 정의</li>
+<li data-line="33" dir="auto"><span class="list-bullet"></span>데이터베이스 객체 파악</li>
+<li data-line="34" dir="auto"><span class="list-bullet"></span>데이터 원칙 ,표준, 관리 프로세스 파악</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="35" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술
+<ul class="has-list-bullet">
+<li data-line="36" dir="auto"><span class="list-bullet"></span>기업의 전산장비, 시스템소프트웨어 네트워크 등 기술 인프라 구성을 체계적으로 분류하여 표현한 것</li>
+<li data-line="37" dir="auto"><span class="list-bullet"></span>전사의 인프라영역 분류 &gt; 영역별 구성요소 도출&gt; 구성요소간 관계 식별</li>
+<li data-line="38" dir="auto"><span class="list-bullet"></span>기술 참조 모델을 사전에 정의하면 전체적인 일관성 확보 가능</li>
+<li data-line="39" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="40" dir="auto"><span class="list-bullet"></span>전사 기술정보 식별</li>
+<li data-line="41" dir="auto"><span class="list-bullet"></span>기술참조모델 정의</li>
+<li data-line="42" dir="auto"><span class="list-bullet"></span>기술 표준 분석</li>
+<li data-line="43" dir="auto"><span class="list-bullet"></span>기술 아키텍처 요소 식별</li>
+<li data-line="44" dir="auto"><span class="list-bullet"></span>기술 자원목록, 제품 목록 파악</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="목표 정보 구축" dir="auto" class="heading" id="목표_정보_구축_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>목표 정보 구축</h4></div><div class="el-p"><p dir="auto">현재 문제점 개선사항 도출 후 목표아키텍처에 반영하는식<br>
+비지니스 아키텍처 정의 &gt; 이를 효율적으로  지원하는 아키텍처 정의<br>
+어플, 데이터 둘다 비지니스와 서로의 연관관계를 비교하여 검증<br>
+현행 아키텍처와 달리 아키텍처 매트릭스의 개념적 수준까지 정의<br>
+이하는 일반적으로 실제 시스템 구축단계에서 수행(유연성확보위해)<br>
+참조 모델과의 연계성을 파악햐여험</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>비지니스
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>현행 추가 업무와 개선 요구사항을 반영함</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>사전에 업무프로세스 재설계(BPR) 같은 작업이 이뤄져야함</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>참조모델 &gt; 관계를 파악</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>비즈니스 아키텍처 정의에 따라 다른것들이 결정되서 매우중요
+<ul class="has-list-bullet">
+<li data-line="5" dir="auto"><span class="list-bullet"></span>적합성을 판단하는데 중요한 기준이됨</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="7" dir="auto"><span class="list-bullet"></span>전사 사업 모델 정의</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>조직 모델 정의</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>업무 기능 모델 정의</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>프로세스 모델 정의</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>업무 매뉴얼 정보 구축</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>어플리케이션
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span>목표 비지니스 아키텍처를 지원하는 전사 어플리케이션 구조를 정의하는 것</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span>목표 업무의 개선요구나 추가적인 어플구축요구 , 어플 자체 개선요구를 아키텍처에 반영</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span>참조 모델 &gt; 상위 기업,유관기업과의 인터페이스를 제고할 수 있도록함</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="17" dir="auto"><span class="list-bullet"></span>전사 어플리케이션 영역 정의</li>
+<li data-line="18" dir="auto"><span class="list-bullet"></span>애플리케이션 모델 정의</li>
+<li data-line="19" dir="auto"><span class="list-bullet"></span>컴포넌트 모델 정의</li>
+<li data-line="20" dir="auto"><span class="list-bullet"></span>프로그램 목록 정보 구축</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="21" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>데이터
+<ul class="has-list-bullet">
+<li data-line="22" dir="auto"><span class="list-bullet"></span>목표 비지니스 아키텍처를 지원하는 데이터를 식별하여 모델로 표현하는것</li>
+<li data-line="23" dir="auto"><span class="list-bullet"></span>업무 개선,추가,자체개선 요구를  데이터 아키텍처에 반영(like app)</li>
+<li data-line="24" dir="auto"><span class="list-bullet"></span>참조모델 &gt; 상위 기업,유관기업과의 인터페이스를 제고할 수 있도록함</li>
+<li data-line="25" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="26" dir="auto"><span class="list-bullet"></span>전사 데이터 영역 모델 정</li>
+<li data-line="27" dir="auto"><span class="list-bullet"></span>개념,논리,물리 데이터 모델 정의</li>
+<li data-line="28" dir="auto"><span class="list-bullet"></span>db 개체 정보구축</li>
+<li data-line="29" dir="auto"><span class="list-bullet"></span>데이터 원칙 표준 관리 프로세스 정의</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="30" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>기술
+<ul class="has-list-bullet">
+<li data-line="31" dir="auto"><span class="list-bullet"></span>어플리케이션, 데이터 아키텍처를 잘 지원할 수 있는 기술아키텍처를 정의</li>
+<li data-line="32" dir="auto"><span class="list-bullet"></span>최근 기술 추이와 기업특성을 고려해야함</li>
+<li data-line="33" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>참조모델 &gt; 전체 기술 인프라의 상호운영성을 제고할 수 있도록함
+<ul class="has-list-bullet">
+<li data-line="34" dir="auto"><span class="list-bullet"></span>일반적으로 기술참조모델 바탕으로 상세화함</li>
+</ul>
+</li>
+<li data-line="35" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>표준프로파일은 조직수준에 따라 달라짐
+<ul class="has-list-bullet">
+<li data-line="36" dir="auto"><span class="list-bullet"></span>but동일 기업내 사용되는 표준은 표준프로파일과 일관성을 가져야함</li>
+<li data-line="37" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개방형시스템구현과 국제 표준을 항상 고려해야한다
+<ul class="has-list-bullet">
+<li data-line="38" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개방형환경을 보장하는건 아님
+<ul class="has-list-bullet">
+<li data-line="39" dir="auto"><span class="list-bullet"></span>따로 추가로 정의하긴해야함</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="40" dir="auto"><span class="list-bullet"></span>기술발전,환경,비전, 업무에 따라 계속 갱신해야함</li>
+</ul>
+</li>
+<li data-line="41" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정의 내역
+<ul class="has-list-bullet">
+<li data-line="42" dir="auto"><span class="list-bullet"></span>전사 기술 영역 모델 정의</li>
+<li data-line="43" dir="auto"><span class="list-bullet"></span>기술 참조 모델 정의</li>
+<li data-line="44" dir="auto"><span class="list-bullet"></span>표준 프로파일 정의</li>
+<li data-line="45" dir="auto"><span class="list-bullet"></span>기술 아키텍처 모델 정의</li>
+<li data-line="46" dir="auto"><span class="list-bullet"></span>기술 자원 목록, 제품 목록 정보 구축</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h2"><h2 data-heading="전사 아키텍처 관리(-)" dir="auto" class="heading" id="전사_아키텍처_관리(-)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 관리(-)</h2></div><div class="el-h3"><h3 data-heading="EA 관리 체계(중)" dir="auto" class="heading" id="EA_관리_체계(중)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>EA 관리 체계(중)</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>거버넌스라고도함</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>정보 아키텍처 정보를 활용할 수 있는 체계를정립하는 것</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>유지관리하기 위한 조직과 프로세스측면의 기반을구축하는것을 의미</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>의사결정 과정에서 전사아키텍처 정보를 활용함
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>일관성과 합리성이 증대되는 것이 목적</li>
+</ul>
+</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>IT 거버넌스 vs EA 거버넌스
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span>IT : IT관리의 효율성과 효과성 증대를 위한 IT전반에 대해 정립</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>EA : EA를 유지하고 지속적으로 개선하기 위해 제도적 기반을 구축하는 것을 의미</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>EA 거버넌스 ⊂ IT 거버넌스</li>
+</ul>
+</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>정착을 위해서는 장기적인 접근이 필요함</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>IT관련 조직의 노력만으로 달성 불가, 전사적인 추진체계가 되어야함</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>관리 체계(= 거버넌스)의 구성요소
+<ul class="has-list-bullet">
+<li data-line="12" dir="auto"><span class="list-bullet"></span>조직</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span>프로세스</li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span>인력</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="조직" dir="auto" class="heading" id="조직_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>조직</h4></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>EA 관리를 위해 필요한 직무와 직무간의 관계, 업무 분장을 정립하는것</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>계획 ~ 실무자까지 다양한 시각에서 책임과 역할이 정의되어야함</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>관리 조직 정의 시 고려사항
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span>IT조직의 규모</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>EA 구축의 목적
+<ul class="has-list-bullet">
+<li data-line="5" dir="auto"><span class="list-bullet"></span>신시스탬 구축위해라면 프로젝트관리조직도 정의해야함</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>IT 조직과 현업과의 관계</li>
+</ul>
+</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>예시(앞에 EA붙어있음)
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span>담당 임원 : 수립의 의사결정, 전사적지원확보</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>아키텍트 : EA 원칙 방향정의및 총괄</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>영역별 담당자</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>관리시스템 관리자 : 관리시스템 관리구축,운영담당</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span>추진 위원회 : 자문단</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="프로세스" dir="auto" class="heading" id="프로세스_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>프로세스</h4></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>EA 관리하기 위한 활동을 정의하는 것</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>전체 정보관리 업무체계와 일관성이 확보되어야 함</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>괄리하는 세부 업무분류 저의 , 규정이나 표준화 된 수행절차 or 문서 양식을 정의하는 것도 포함함</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>IT프로세스에 관리프로세스 추가해놓고 EA관리 프로세스라 하면안됨
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>제대로 수행안될가능성이 높음
+<ul class="has-list-bullet">
+<li data-line="5" dir="auto"><span class="list-bullet"></span>이러면 최신성, 완전성이 떨어짐</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>따라서 IT프로세스를 EA관점에서 식별해서 EA정보 중심으로 설계해야함</li>
+</ul>
+</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>예시(앞에 EA붙어있음)<span alt="assets/데이터아키텍처 1 전사아키텍처 이해-20250319210953317.png" src="900-자격증/assets/데이터아키텍처-1-전사아키텍처-이해-20250319210953317.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 300px; max-width: 100%;"><img alt="assets/데이터아키텍처 1 전사아키텍처 이해-20250319210953317.png" src="900-자격증/assets/데이터아키텍처-1-전사아키텍처-이해-20250319210953317.png" target="_self" style="width: 300px; max-width: 100%;"></span>
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span>기획</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>변경관리</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>준수 통제</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>활용 지원</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span>관리 시스템 관리</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span>평가</li>
+</ul>
+</li>
+</ul></div><div class="el-h4"><h4 data-heading="인력" dir="auto" class="heading" id="인력_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>인력</h4></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>EA 관리를 담당하는 직무별 역량을 정의하고이를 확보하기 위한 방안을 정의함</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>관리에 필요한 역량요소를 분류 &gt; 직무별로 할당 </li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>역량요소를 확보하기 위한 교육계획을 수립
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span>리더십,기술적,활용 역량</li>
+</ul>
+</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span>역량 수준을 평가할 수있는 체계를 포함</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>영역별로 지속적으로 발전시킬 수 있는 아키텍트가 조직내부에있어야함
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span>즉 전문가 육성을해야함</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="EA 관리시스템(하)" dir="auto" class="heading" id="EA_관리시스템(하)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>EA 관리시스템(하)</h3></div><div class="el-p"><p dir="auto">구축관리하고활용되는 모든 EA프로세스에 대한 효율성을 제고하기 위한 정보시스탬<br>
+EA 모델링 &gt;EA레포 &gt; EA 포털 &gt; 정보활용</p></div><div class="el-h2"><h2 data-heading="EA 활용(상)" dir="auto" class="heading" id="EA_활용(상)_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>EA 활용(상)</h2></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>영역에 따른 분류
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>목표 아키텍처 이행계획</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>전사 아키텍처정보 상시활용</li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>효과적 활용방안
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>EA자체가 좋아야함
+<ul class="has-list-bullet">
+<li data-line="5" dir="auto"><span class="list-bullet"></span>정보관리하고 통제할 수 있는 전담조직이있어야함</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>정보를 전사적으로 공유활용할 수 있는 절차와 시스템이필요함</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>정확한 기준이 있어야함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="목표 아키텍처 이행계획" dir="auto" class="heading" id="목표_아키텍처_이행계획_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>목표 아키텍처 이행계획</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>주로 새로운 시스템 추진을 목적</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>현행과 목표 EA차이를 분석하여 프로젝트를 정의</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>유사성과 상호연관성을 고려하여 우선순위 결정</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>이행전략과 세부이행계획 , 변화관리계획수립
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>세부이행계획은 </li>
+</ul>
+</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>주요 활동/작업
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span>아키텍처 GAP(차이) 분석</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>프로젝트정의</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>이행전략 수립</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>이행계획 수립
+<ul class="has-list-bullet">
+<li data-line="10" dir="auto"><span class="list-bullet"></span>필요인력, 자원리소스계획,추진일정, 비용계획 등이 포함</li>
+</ul>
+</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>변화관리 계획 수립</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="전사 아키텍처 정보 상시 활용" dir="auto" class="heading" id="전사_아키텍처_정보_상시_활용_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사 아키텍처 정보 상시 활용</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>EA정보를 활용하여 IT업무 지원하는 것</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>적용영역을 적극적으로 발굴해야함</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>정보활용 영역의 예
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>IT 기획 관리
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>계획 수립시 EA활용해서 목표시스템정의하고 계획수립함</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>투자에도도움을 줌</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>정보화계획수립에 활용</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>업무프로세스 혁신에 활용</li>
+</ul>
+</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>IT 구축 관리
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>프로젝트 계획에 활용</li>
+<li data-line="10" dir="auto"><span class="list-bullet"></span>시스템개발에 활용</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>중복배제 , 재사용성, 통합성 제고 &gt; IT비용 절약가능</li>
+<li data-line="12" dir="auto"><span class="list-bullet"></span>EA대부분이프로젝트 관리의 기준이됨</li>
+</ul>
+</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>IT 운영 및 통계
+<ul class="has-list-bullet">
+<li data-line="14" dir="auto"><span class="list-bullet"></span>EA바탕으로 시스템변경을할때 반영</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span>문제생길시 EA가 큰도움이될수있음</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span>도입, 폐기의 근거자료가 될 수있음</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><div class="el-h2"><h2 data-heading="전사아키텍처랑 데이터아키텍처" dir="auto" class="heading" id="전사아키텍처랑_데이터아키텍처_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전사아키텍처랑 데이터아키텍처</h2></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>그래서 님 데이터아키텍처 배우는데 왜알아야함?
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>전사아키텍처프레임워크 바탕으로 데이터아키텍처 설꼐해야함</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>그리고 다아키텍처영역과 잘 연계가 되어야함요 ;</li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>아키텍처 매트릭스아시죠? 그거졸라생각해야해용<span alt="assets/데이터아키텍처 1 전사아키텍처 이해-20250319214507811.png" src="900-자격증/assets/데이터아키텍처-1-전사아키텍처-이해-20250319214507811.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 506px; max-width: 100%;"><img alt="assets/데이터아키텍처 1 전사아키텍처 이해-20250319214507811.png" src="900-자격증/assets/데이터아키텍처-1-전사아키텍처-이해-20250319214507811.png" target="_self" style="width: 506px; max-width: 100%;"></span>
+<ol>
+<li data-line="4" dir="auto"><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>범위 통합
+<ul class="has-list-bullet">
+<li data-line="5" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>범위 전체에 대해 각모델 내의 불일치성을 제거
+<ul class="has-list-bullet">
+<li data-line="6" dir="auto"><span class="list-bullet"></span>중복을 제거한단소리임</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="7" dir="auto"><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>수평 통합
+<ul class="has-list-bullet">
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>타 영역과 불일치성을 제거
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>운영의 조화와 관련</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-line="10" dir="auto"><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>수직 통합
+<ul class="has-list-bullet">
+<li data-line="11" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>관점간의 불이치성을 제거
+<ul class="has-list-bullet">
+<li data-line="12" dir="auto"><span class="list-bullet"></span>IT투자의 품질과 관련</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span>요구사항에 대한 일치 정렬개념과 연관</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"><div id="right-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><label class="theme-toggle-container" for="theme-toggle-input" id=""><input class="theme-toggle-input" type="checkbox" id="theme-toggle-input"><div class="toggle-background"></div></label></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="right-sidebar-content" class="leaf-content"><div class="graph-view-wrapper"><div class="feature-header"><div class="feature-title">Interactive Graph</div></div><div class="graph-view-placeholder">
+		<div class="graph-view-container">
+			<div class="graph-icon graph-expand" role="button" aria-label="Expand" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+			<div class="graph-icon graph-global" role="button" aria-label="Global Graph" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-git-fork"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></div>
+			<canvas id="graph-canvas" class="hide" width="512px" height="512px"></canvas>
+		</div>
+		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item mod-collapsible" data-depth="1"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#DA_1전사아키텍처_이해_0" data-path="#DA_1전사아키텍처_이해_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="DA_1전사아키텍처 이해">DA_1전사아키텍처 이해</div></a><div class="tree-item-children"><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#전사아키텍처(상)_0" data-path="#전사아키텍처(상)_0"><div class="tree-item-inner heading-link" heading-name="전사아키텍처(상)">전사아키텍처(상)</div></a><div class="tree-item-children"></div></div><div class="tree-item mod-collapsible" data-depth="2"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#전사아키텍처_프레임워크(중)_0" data-path="#전사아키텍처_프레임워크(중)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="전사아키텍처 프레임워크(중)">전사아키텍처 프레임워크(중)</div></a><div class="tree-item-children"><div class="tree-item mod-collapsible" data-depth="3"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#구성_0" data-path="#구성_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="구성">구성</div></a><div class="tree-item-children"><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#정책_0" data-path="#정책_0"><div class="tree-item-inner heading-link" heading-name="정책">정책</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#정보_0" data-path="#정보_0"><div class="tree-item-inner heading-link" heading-name="정보">정보</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#관리_0" data-path="#관리_0"><div class="tree-item-inner heading-link" heading-name="관리">관리</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item mod-collapsible" data-depth="3"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#아키텍처_도메인_구성_0" data-path="#아키텍처_도메인_구성_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="아키텍처 도메인 구성">아키텍처 도메인 구성</div></a><div class="tree-item-children"><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#비지니스_아키텍처_0" data-path="#비지니스_아키텍처_0"><div class="tree-item-inner heading-link" heading-name="비지니스 아키텍처">비지니스 아키텍처</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#어플리케이션_아키텍처_0" data-path="#어플리케이션_아키텍처_0"><div class="tree-item-inner heading-link" heading-name="어플리케이션 아키텍처">어플리케이션 아키텍처</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#데이터_아키텍처_0" data-path="#데이터_아키텍처_0"><div class="tree-item-inner heading-link" heading-name="데이터 아키텍처">데이터 아키텍처</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#기술_아키텍처_0" data-path="#기술_아키텍처_0"><div class="tree-item-inner heading-link" heading-name="기술 아키텍처">기술 아키텍처</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#전사아키텍처_프레임워크_사례_0" data-path="#전사아키텍처_프레임워크_사례_0"><div class="tree-item-inner heading-link" heading-name="전사아키텍처 프레임워크 사례">전사아키텍처 프레임워크 사례</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item mod-collapsible" data-depth="2"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#전사_아키텍처_참조모델(상)_0" data-path="#전사_아키텍처_참조모델(상)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="전사 아키텍처 참조모델(상)">전사 아키텍처 참조모델(상)</div></a><div class="tree-item-children"><div class="tree-item mod-collapsible" data-depth="3"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#법정부_EA참조_모델_0" data-path="#법정부_EA참조_모델_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="법정부 EA참조 모델">법정부 EA참조 모델</div></a><div class="tree-item-children"><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#업무_0" data-path="#업무_0"><div class="tree-item-inner heading-link" heading-name="업무">업무</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#서비스_0" data-path="#서비스_0"><div class="tree-item-inner heading-link" heading-name="서비스">서비스</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#데이터_0" data-path="#데이터_0"><div class="tree-item-inner heading-link" heading-name="데이터">데이터</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#기술_0" data-path="#기술_0"><div class="tree-item-inner heading-link" heading-name="기술">기술</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#성과_0" data-path="#성과_0"><div class="tree-item-inner heading-link" heading-name="성과">성과</div></a><div class="tree-item-children"></div></div></div></div></div></div><div class="tree-item mod-collapsible" data-depth="2"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#전사_아키텍처_구축(-)_0" data-path="#전사_아키텍처_구축(-)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="전사 아키텍처 구축(-)">전사 아키텍처 구축(-)</div></a><div class="tree-item-children"><div class="tree-item mod-collapsible" data-depth="3"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#정보_구성_정의(중)_0" data-path="#정보_구성_정의(중)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="정보 구성 정의(중)">정보 구성 정의(중)</div></a><div class="tree-item-children"><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#아키텍처_매트릭스_정의_0" data-path="#아키텍처_매트릭스_정의_0"><div class="tree-item-inner heading-link" heading-name="아키텍처 매트릭스 정의">아키텍처 매트릭스 정의</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#참조_모델_정의_0" data-path="#참조_모델_정의_0"><div class="tree-item-inner heading-link" heading-name="참조 모델 정의">참조 모델 정의</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#전사_아키텍처_원칙_수립_0" data-path="#전사_아키텍처_원칙_수립_0"><div class="tree-item-inner heading-link" heading-name="전사 아키텍처 원칙 수립">전사 아키텍처 원칙 수립</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item mod-collapsible" data-depth="3"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#정보_구축(상)_0" data-path="#정보_구축(상)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="정보 구축(상)">정보 구축(상)</div></a><div class="tree-item-children"><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#현행_정보_구축_0" data-path="#현행_정보_구축_0"><div class="tree-item-inner heading-link" heading-name="현행 정보 구축">현행 정보 구축</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#목표_정보_구축_0" data-path="#목표_정보_구축_0"><div class="tree-item-inner heading-link" heading-name="목표 정보 구축">목표 정보 구축</div></a><div class="tree-item-children"></div></div></div></div></div></div><div class="tree-item mod-collapsible" data-depth="2"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#전사_아키텍처_관리(-)_0" data-path="#전사_아키텍처_관리(-)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="전사 아키텍처 관리(-)">전사 아키텍처 관리(-)</div></a><div class="tree-item-children"><div class="tree-item mod-collapsible" data-depth="3"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#EA_관리_체계(중)_0" data-path="#EA_관리_체계(중)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="EA 관리 체계(중)">EA 관리 체계(중)</div></a><div class="tree-item-children"><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#조직_0" data-path="#조직_0"><div class="tree-item-inner heading-link" heading-name="조직">조직</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#프로세스_0" data-path="#프로세스_0"><div class="tree-item-inner heading-link" heading-name="프로세스">프로세스</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#인력_0" data-path="#인력_0"><div class="tree-item-inner heading-link" heading-name="인력">인력</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#EA_관리시스템(하)_0" data-path="#EA_관리시스템(하)_0"><div class="tree-item-inner heading-link" heading-name="EA 관리시스템(하)">EA 관리시스템(하)</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item mod-collapsible" data-depth="2"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/da_1전사아키텍처-이해.html#EA_활용(상)_0" data-path="#EA_활용(상)_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="EA 활용(상)">EA 활용(상)</div></a><div class="tree-item-children"><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#목표_아키텍처_이행계획_0" data-path="#목표_아키텍처_이행계획_0"><div class="tree-item-inner heading-link" heading-name="목표 아키텍처 이행계획">목표 아키텍처 이행계획</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#전사_아키텍처_정보_상시_활용_0" data-path="#전사_아키텍처_정보_상시_활용_0"><div class="tree-item-inner heading-link" heading-name="전사 아키텍처 정보 상시 활용">전사 아키텍처 정보 상시 활용</div></a><div class="tree-item-children"></div></div></div></div><div class="tree-item" data-depth="2"><a class="tree-item-self is-clickable" href="900-자격증/da_1전사아키텍처-이해.html#전사아키텍처랑_데이터아키텍처_0" data-path="#전사아키텍처랑_데이터아키텍처_0"><div class="tree-item-inner heading-link" heading-name="전사아키텍처랑 데이터아키텍처">전사아키텍처랑 데이터아키텍처</div></a><div class="tree-item-children"></div></div></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html><html lang="en-gb"><head>
+<title>sqld</title>
+<base href="..">
+<meta name="pathname" content="900-자격증/sqld.html">
+<meta name="description" content="Mj's Brain - sqld">
+<meta property="og:title" content="sqld">
+<meta property="og:description" content="Mj's Brain - sqld">
+<meta property="og:type" content="website">
+<meta property="og:url" content="900-자격증/sqld.html">
+<meta property="og:image" content="900-자격증/assets/sqld-1748487223169.png">
+<meta name="author" content="Jeon MinJi"><meta charset="UTF-8"><meta property="og:site_name" content="Mj's Brain"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-wasm-script" src="site-lib/scripts/graph-wasm.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-render-worker-script" src="site-lib/scripts/graph-render-worker.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="stylesheet" href="site-lib/styles/theme.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/supported-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/supported-plugins.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager show-inline-title show-ribbon highlightr-rounded h2-underline is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"><div id="left-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><div id="search-container"><div id="search-wrapper"><input enterkeyhint="search" type="search" spellcheck="false" placeholder="Search..."><div aria-label="Clear search" id="search-clear-button"></div></div></div></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="left-sidebar-content" class="leaf-content"><link itemprop="include" href="site-lib/html/file-tree-content.html"></div></div><script defer="">let ls = document.querySelector("#left-sidebar"); ls.classList.toggle("is-collapsed", window.innerWidth < 768); ls.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-left-width"));</script></div></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings allow-fold-lists show-indentation-guide show-properties" data-type="markdown"><style id="MJX-CHTML-styles">mjx-c.mjx-c41::before{padding:.716em .75em 0 0;content:"A"}mjx-c.mjx-c63::before{padding:.448em .444em .011em 0;content:"c"}mjx-c.mjx-c75::before{padding:.442em .556em .011em 0;content:"u"}mjx-c.mjx-c72::before{padding:.442em .392em 0 0;content:"r"}mjx-c.mjx-c61::before{padding:.448em .5em .011em 0;content:"a"}mjx-c.mjx-c79::before{padding:.431em .528em .204em 0;content:"y"}mjx-c.mjx-c54::before{padding:.677em .722em 0 0;content:"T"}mjx-c.mjx-c50::before{padding:.683em .681em 0 0;content:"P"}mjx-c.mjx-c4E::before{padding:.683em .75em 0 0;content:"N"}mjx-c.mjx-c46::before{padding:.68em .653em 0 0;content:"F"}mjx-c.mjx-c4D::before{padding:.683em .917em 0 0;content:"M"}mjx-c.mjx-c53::before{padding:.705em .556em .022em 0;content:"S"}mjx-c.mjx-c45::before{padding:.68em .681em 0 0;content:"E"}mjx-c.mjx-c7C::before{padding:.75em .278em .249em 0;content:"|"}mjx-c.mjx-c2211.TEX-S1::before{padding:.75em 1.056em .25em 0;content:"∑"}mjx-c.mjx-cAF::before{padding:.59em .5em 0 0;content:"¯"}mjx-c.mjx-c1D44D.TEX-I::before{padding:.683em .723em 0 0;content:"Z"}mjx-c.mjx-c1D707.TEX-I::before{padding:.442em .603em .216em 0;content:"μ"}mjx-c.mjx-c1D70E.TEX-I::before{padding:.431em .571em .011em 0;content:"σ"}mjx-mtext{display:inline-block;text-align:left}mjx-mspace{display:inline-block;text-align:left}mjx-c.mjx-c1D43C.TEX-I::before{padding:.683em .504em 0 0;content:"I"}mjx-c.mjx-c1D444.TEX-I::before{padding:.704em .791em .194em 0;content:"Q"}mjx-c.mjx-c33::before{padding:.665em .5em .022em 0;content:"3"}mjx-c.mjx-c20::before{padding:0 .25em 0 0;content:" "}mjx-c.mjx-c3A::before{padding:.43em .278em 0 0;content:":"}mjx-c.mjx-c3C::before{padding:.54em .778em .04em 0;content:"<"}mjx-c.mjx-c2E::before{padding:.12em .278em 0 0;content:"."}mjx-c.mjx-c35::before{padding:.666em .5em .022em 0;content:"5"}mjx-c.mjx-c3E::before{padding:.54em .778em .04em 0;content:">"}mjx-mover{display:inline-block;text-align:left}mjx-mover:not([limits=false]){padding-top:.1em}mjx-mover:not([limits=false])>*{display:block;text-align:left}mjx-c.mjx-c5E::before{padding:.694em .5em 0 0;content:"^"}mjx-c.mjx-c1D466.TEX-I::before{padding:.442em .49em .205em 0;content:"y"}mjx-c.mjx-c1D44A.TEX-I::before{padding:.683em 1.048em .022em 0;content:"W"}mjx-c.mjx-c30::before{padding:.666em .5em .022em 0;content:"0"}mjx-munderover{display:inline-block;text-align:left}mjx-munderover:not([limits=false]){padding-top:.1em}mjx-munderover:not([limits=false])>*{display:block}mjx-msubsup{display:inline-block;text-align:left}mjx-script{display:inline-block;padding-right:.05em;padding-left:.033em}mjx-script>mjx-spacer{display:block}mjx-c.mjx-cD7::before{padding:.491em .778em 0 0;content:"×"}mjx-c.mjx-c1D443.TEX-I::before{padding:.683em .751em 0 0;content:"P"}mjx-c.mjx-c1D450.TEX-I::before{padding:.442em .433em .011em 0;content:"c"}mjx-c.mjx-c1D459.TEX-I::before{padding:.694em .298em .011em 0;content:"l"}mjx-c.mjx-c2B::before{padding:.583em .778em .082em 0;content:"+"}mjx-c.mjx-c2211.TEX-S2::before{padding:.95em 1.444em .45em 0;content:"∑"}mjx-c.mjx-c28::before{padding:.75em .389em .25em 0;content:"("}mjx-c.mjx-c1D45D.TEX-I::before{padding:.442em .503em .194em 0;content:"p"}mjx-c.mjx-c29::before{padding:.75em .389em .25em 0;content:")"}mjx-msup{display:inline-block;text-align:left}mjx-mn{display:inline-block;text-align:left}mjx-c.mjx-c1D445.TEX-I::before{padding:.683em .759em .021em 0;content:"R"}mjx-c.mjx-c32::before{padding:.666em .5em 0 0;content:"2"}mjx-c.mjx-c1D446.TEX-I::before{padding:.705em .645em .022em 0;content:"S"}mjx-c.mjx-c1D447.TEX-I::before{padding:.677em .704em 0 0;content:"T"}mjx-c.mjx-c31::before{padding:.666em .5em 0 0;content:"1"}mjx-c.mjx-c1D438.TEX-I::before{padding:.68em .764em 0 0;content:"E"}mjx-container[jax=CHTML]{line-height:0}mjx-container [space="1"]{margin-left:.111em}mjx-container [space="2"]{margin-left:.167em}mjx-container [space="3"]{margin-left:.222em}mjx-container [space="4"]{margin-left:.278em}mjx-container [space="5"]{margin-left:.333em}mjx-container [rspace="1"]{margin-right:.111em}mjx-container [rspace="2"]{margin-right:.167em}mjx-container [rspace="3"]{margin-right:.222em}mjx-container [rspace="4"]{margin-right:.278em}mjx-container [rspace="5"]{margin-right:.333em}mjx-container [size="s"]{font-size:70.7%}mjx-container [size=ss]{font-size:50%}mjx-container [size=Tn]{font-size:60%}mjx-container [size=sm]{font-size:85%}mjx-container [size=lg]{font-size:120%}mjx-container [size=Lg]{font-size:144%}mjx-container [size=LG]{font-size:173%}mjx-container [size=hg]{font-size:207%}mjx-container [size=HG]{font-size:249%}mjx-container [width=full]{width:100%}mjx-box{display:inline-block}mjx-block{display:block}mjx-itable{display:inline-table}mjx-row{display:table-row}mjx-row>*{display:table-cell}mjx-mtext{display:inline-block}mjx-mstyle{display:inline-block}mjx-merror{display:inline-block;color:red;background-color:#ff0}mjx-mphantom{visibility:hidden}mjx-assistive-mml{top:0;left:0;clip:rect(1px,1px,1px,1px);user-select:none;position:absolute!important;padding:1px 0 0!important;border:0!important;display:block!important;width:auto!important;overflow:hidden!important}mjx-assistive-mml[display=block]{width:100%!important}mjx-math{display:inline-block;text-align:left;line-height:0;text-indent:0;font-style:normal;font-weight:400;font-size:100%;font-size-adjust:none;letter-spacing:normal;border-collapse:collapse;overflow-wrap:normal;word-spacing:normal;white-space:nowrap;direction:ltr;padding:1px 0}mjx-container[jax=CHTML][display=true]{display:block;text-align:center;margin:1em 0}mjx-container[jax=CHTML][display=true][width=full]{display:flex}mjx-container[jax=CHTML][display=true] mjx-math{padding:0}mjx-container[jax=CHTML][justify=left]{text-align:left}mjx-container[jax=CHTML][justify=right]{text-align:right}mjx-msub{display:inline-block;text-align:left}mjx-mi{display:inline-block;text-align:left}mjx-c{display:inline-block}mjx-utext{display:inline-block;padding:.75em 0 .2em}mjx-texatom{display:inline-block;text-align:left}mjx-mo{display:inline-block;text-align:left}mjx-stretchy-h{display:inline-table;width:100%}mjx-stretchy-h>*{display:table-cell;width:0}mjx-stretchy-h>*>mjx-c{display:inline-block;transform:scaleX(1)}mjx-stretchy-h>*>mjx-c::before{display:inline-block;width:initial}mjx-stretchy-h>mjx-ext{overflow:clip visible;width:100%}mjx-stretchy-h>mjx-ext>mjx-c::before{transform:scaleX(500)}mjx-stretchy-h>mjx-ext>mjx-c{width:0}mjx-stretchy-h>mjx-beg>mjx-c{margin-right:-.1em}mjx-stretchy-h>mjx-end>mjx-c{margin-left:-.1em}mjx-stretchy-v{display:inline-block}mjx-stretchy-v>*{display:block}mjx-stretchy-v>mjx-beg{height:0}mjx-stretchy-v>mjx-end>mjx-c{display:block}mjx-stretchy-v>*>mjx-c{transform:scaleY(1);transform-origin:left center;overflow:hidden}mjx-stretchy-v>mjx-ext{display:block;height:100%;box-sizing:border-box;border:0 solid transparent;overflow:visible clip}mjx-stretchy-v>mjx-ext>mjx-c::before{width:initial;box-sizing:border-box}mjx-stretchy-v>mjx-ext>mjx-c{transform:scaleY(500) translateY(.075em);overflow:visible}mjx-mark{display:inline-block;height:0}mjx-mfrac{display:inline-block;text-align:left}mjx-frac{display:inline-block;vertical-align:.17em;padding:0 .22em}mjx-frac[type="d"]{vertical-align:.04em}mjx-frac[delims]{padding:0 .1em}mjx-frac[atop]{padding:0 .12em}mjx-frac[atop][delims]{padding:0}mjx-dtable{display:inline-table;width:100%}mjx-dtable>*{font-size:2000%}mjx-dbox{display:block;font-size:5%}mjx-num{display:block;text-align:center}mjx-den{display:block;text-align:center}mjx-mfrac[bevelled]>mjx-num{display:inline-block}mjx-mfrac[bevelled]>mjx-den{display:inline-block}mjx-den[align=right],mjx-num[align=right]{text-align:right}mjx-den[align=left],mjx-num[align=left]{text-align:left}mjx-nstrut{display:inline-block;height:.054em;width:0;vertical-align:-.054em}mjx-nstrut[type="d"]{height:.217em;vertical-align:-.217em}mjx-dstrut{display:inline-block;height:.505em;width:0}mjx-dstrut[type="d"]{height:.726em}mjx-line{display:block;box-sizing:border-box;min-height:1px;height:.06em;border-top:.06em solid;margin:.06em -.1em;overflow:hidden}mjx-line[type="d"]{margin:.18em -.1em}mjx-mrow{display:inline-block;text-align:left}mjx-c::before{display:block;width:0}.MJX-TEX{font-family:MJXZERO,MJXTEX}.TEX-B{font-family:MJXZERO,MJXTEX-B}.TEX-I{font-family:MJXZERO,MJXTEX-I}.TEX-MI{font-family:MJXZERO,MJXTEX-MI}.TEX-BI{font-family:MJXZERO,MJXTEX-BI}.TEX-S1{font-family:MJXZERO,MJXTEX-S1}.TEX-S2{font-family:MJXZERO,MJXTEX-S2}.TEX-S3{font-family:MJXZERO,MJXTEX-S3}.TEX-S4{font-family:MJXZERO,MJXTEX-S4}.TEX-A{font-family:MJXZERO,MJXTEX-A}.TEX-C{font-family:MJXZERO,MJXTEX-C}.TEX-CB{font-family:MJXZERO,MJXTEX-CB}.TEX-FR{font-family:MJXZERO,MJXTEX-FR}.TEX-FRB{font-family:MJXZERO,MJXTEX-FRB}.TEX-SS{font-family:MJXZERO,MJXTEX-SS}.TEX-SSB{font-family:MJXZERO,MJXTEX-SSB}.TEX-SSI{font-family:MJXZERO,MJXTEX-SSI}.TEX-SC{font-family:MJXZERO,MJXTEX-SC}.TEX-T{font-family:MJXZERO,MJXTEX-T}.TEX-V{font-family:MJXZERO,MJXTEX-V}.TEX-VB{font-family:MJXZERO,MJXTEX-VB}mjx-stretchy-h mjx-c,mjx-stretchy-v mjx-c{font-family:MJXZERO,MJXTEX-S1,MJXTEX-S4,MJXTEX,MJXTEX-A!important}@font-face{font-family:MJXZERO;src:url("site-lib/fonts/mathjax_zero.woff") format("woff")}@font-face{font-family:MJXTEX;src:url("site-lib/fonts/mathjax_main-regular.woff") format("woff")}@font-face{font-family:MJXTEX-B;src:url("site-lib/fonts/mathjax_main-bold.woff") format("woff")}@font-face{font-family:MJXTEX-I;src:url("site-lib/fonts/mathjax_math-italic.woff") format("woff")}@font-face{font-family:MJXTEX-MI;src:url("site-lib/fonts/mathjax_main-italic.woff") format("woff")}@font-face{font-family:MJXTEX-BI;src:url("site-lib/fonts/mathjax_math-bolditalic.woff") format("woff")}@font-face{font-family:MJXTEX-S1;src:url("site-lib/fonts/mathjax_size1-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S2;src:url("site-lib/fonts/mathjax_size2-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S3;src:url("site-lib/fonts/mathjax_size3-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S4;src:url("site-lib/fonts/mathjax_size4-regular.woff") format("woff")}@font-face{font-family:MJXTEX-A;src:url("site-lib/fonts/mathjax_ams-regular.woff") format("woff")}@font-face{font-family:MJXTEX-C;src:url("site-lib/fonts/mathjax_calligraphic-regular.woff") format("woff")}@font-face{font-family:MJXTEX-CB;src:url("site-lib/fonts/mathjax_calligraphic-bold.woff") format("woff")}@font-face{font-family:MJXTEX-FR;src:url("site-lib/fonts/mathjax_fraktur-regular.woff") format("woff")}@font-face{font-family:MJXTEX-FRB;src:url("site-lib/fonts/mathjax_fraktur-bold.woff") format("woff")}@font-face{font-family:MJXTEX-SS;src:url("site-lib/fonts/mathjax_sansserif-regular.woff") format("woff")}@font-face{font-family:MJXTEX-SSB;src:url("site-lib/fonts/mathjax_sansserif-bold.woff") format("woff")}@font-face{font-family:MJXTEX-SSI;src:url("site-lib/fonts/mathjax_sansserif-italic.woff") format("woff")}@font-face{font-family:MJXTEX-SC;src:url("site-lib/fonts/mathjax_script-regular.woff") format("woff")}@font-face{font-family:MJXTEX-T;src:url("site-lib/fonts/mathjax_typewriter-regular.woff") format("woff")}@font-face{font-family:MJXTEX-V;src:url("site-lib/fonts/mathjax_vector-regular.woff") format("woff")}@font-face{font-family:MJXTEX-VB;src:url("site-lib/fonts/mathjax_vector-bold.woff") format("woff")}mjx-c.mjx-c1D44B.TEX-I::before{padding:.683em .852em 0 0;content:"X"}mjx-c.mjx-c1D45B.TEX-I::before{padding:.442em .6em .011em 0;content:"n"}mjx-c.mjx-c1D45C.TEX-I::before{padding:.441em .485em .011em 0;content:"o"}mjx-c.mjx-c1D45F.TEX-I::before{padding:.442em .451em .011em 0;content:"r"}mjx-c.mjx-c1D45A.TEX-I::before{padding:.442em .878em .011em 0;content:"m"}mjx-c.mjx-c3D::before{padding:.583em .778em .082em 0;content:"="}mjx-c.mjx-c1D465.TEX-I::before{padding:.442em .572em .011em 0;content:"x"}mjx-c.mjx-c2212::before{padding:.583em .778em .082em 0;content:"−"}mjx-c.mjx-c1D456.TEX-I::before{padding:.661em .345em .011em 0;content:"i"}mjx-c.mjx-c1D44E.TEX-I::before{padding:.441em .529em .01em 0;content:"a"}mjx-c.mjx-c1D467.TEX-I::before{padding:.442em .465em .011em 0;content:"z"}mjx-c.mjx-c1D452.TEX-I::before{padding:.442em .466em .011em 0;content:"e"}mjx-c.mjx-c1D460.TEX-I::before{padding:.442em .469em .01em 0;content:"s"}mjx-c.mjx-c1D461.TEX-I::before{padding:.626em .361em .011em 0;content:"t"}mjx-c.mjx-c1D451.TEX-I::before{padding:.694em .52em .01em 0;content:"d"}</style><pre class="frontmatter language-yaml" style="display: none;"><code class="language-yaml is-loaded"><span class="token key atrule">created</span><span class="token punctuation">:</span> <span class="token datetime number">2025-01-27</span>
+<span class="token key atrule">author</span><span class="token punctuation">:</span> Jeon MinJi
+<span class="token key atrule">source</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token key atrule">type</span><span class="token punctuation">:</span> 📌 개발노트
+<span class="token key atrule">topics</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">"[[📖 700 컴퓨터 과학]]"</span>
+  <span class="token punctuation">-</span> <span class="token string">"[[../300-백엔드개발/0_SubTopics/📚 305 데이터베이스]]"</span>
+<span class="token key atrule">index</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">"[[🏷️ 자격증]]"</span>
+<span class="token key atrule">tags</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">"#SQLD"</span>
+  <span class="token punctuation">-</span> <span class="token string">"#SQL"</span>
+  <span class="token punctuation">-</span> <span class="token string">"#데이터베이스"</span>
+  <span class="token punctuation">-</span> <span class="token string">"#정규화"</span>
+  <span class="token punctuation">-</span> <span class="token string">"#조인"</span></code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="sqld_0">sqld</h1><table style="border-radius: 4px; overflow: hidden;"><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>created</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;">Mon Jan 27 2025 09:00:00 GMT+0900 (Korean Standard Time)</td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>author</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;">Jeon MinJi</td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>source</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"></div></td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>type</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;">📌 개발노트</td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>topics</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"><a href="99-settings/1-topics/📖-700-컴퓨터-과학.html">📖 700 컴퓨터 과학</a>[[../300-백엔드개발/0_SubTopics/📚 305 데이터베이스]]</div></td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>index</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"><a href="99-settings/2-index/🏷️-자격증.html">🏷️ 자격증</a></div></td></tr><tr><td style="font-weight: lighter; white-space: nowrap; font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><span class="metadata-property-icon" aria-disabled="false" style="vertical-align: middle; margin-right: 0.5em; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-text"><path d="M17 6.1H3"></path><path d="M21 12.1H3"></path><path d="M15.1 18H3"></path></svg></span>tags</td><td style="font-size: 0.9rem; vertical-align: top; padding-top: 0.5em;"><div style="display: flex; flex-wrap: wrap; gap: 0.5em;"><a href="?query=tag:#SQLD" class="tag is-unresolved">##SQLD</a><a href="?query=tag:#SQL" class="tag is-unresolved">##SQL</a><a href="?query=tag:#데이터베이스" class="tag is-unresolved">##데이터베이스</a><a href="?query=tag:#정규화" class="tag is-unresolved">##정규화</a><a href="?query=tag:#조인" class="tag is-unresolved">##조인</a></div></td></tr></table></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-p"><p dir="auto"><a rel="noopener nofollow" class="external-link is-unresolved" href="https://wikidocs.net/170663" target="_self">https://wikidocs.net/170663</a></p></div><div class="el-p"><p dir="auto"><span alt="assets/sqld-1748487223169.png" src="900-자격증/assets/sqld-1748487223169.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487223169.png" src="900-자격증/assets/sqld-1748487223169.png" target="_self"></span><span alt="assets/sqld-1748487240050.png" src="900-자격증/assets/sqld-1748487240050.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487240050.png" src="900-자격증/assets/sqld-1748487240050.png" target="_self"></span><span alt="assets/sqld-1748487284051.png" src="900-자격증/assets/sqld-1748487284051.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487284051.png" src="900-자격증/assets/sqld-1748487284051.png" target="_self"></span><span alt="assets/sqld-1748487439087.png" src="900-자격증/assets/sqld-1748487439087.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487439087.png" src="900-자격증/assets/sqld-1748487439087.png" target="_self"></span><br>
+반정규화<br>
+수직수평분할 조인때매 중복칼럼추가<br>
+<span alt="assets/sqld-1748487690817.png" src="900-자격증/assets/sqld-1748487690817.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487690817.png" src="900-자격증/assets/sqld-1748487690817.png" target="_self"></span><span alt="assets/sqld-1748487824445.png" src="900-자격증/assets/sqld-1748487824445.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487824445.png" src="900-자격증/assets/sqld-1748487824445.png" target="_self"></span><span alt="assets/sqld-1748487874065.png" src="900-자격증/assets/sqld-1748487874065.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487874065.png" src="900-자격증/assets/sqld-1748487874065.png" target="_self"></span><span alt="assets/sqld-1748487967292.png" src="900-자격증/assets/sqld-1748487967292.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748487967292.png" src="900-자격증/assets/sqld-1748487967292.png" target="_self"></span></p></div><div class="el-p"><p dir="auto">​</p></div><div class="el-p"><p dir="auto">집합연산자<br>
+위에서 아래서</p></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">연산자</th>
+<th dir="ltr">표준 SQL 지원</th>
+<th dir="ltr">Oracle 지원</th>
+<th dir="ltr">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">UNION</td>
+<td dir="ltr">O</td>
+<td dir="ltr">O</td>
+<td dir="ltr">중복 제거 합집합,정렬도됨</td>
+</tr>
+<tr>
+<td dir="ltr">UNION ALL</td>
+<td dir="ltr">O</td>
+<td dir="ltr">O</td>
+<td dir="ltr">중복 포함 합집합, 정렬도안됨</td>
+</tr>
+<tr>
+<td dir="ltr">INTERSECT</td>
+<td dir="ltr">O</td>
+<td dir="ltr">O</td>
+<td dir="ltr">교집합</td>
+</tr>
+<tr>
+<td dir="ltr">EXCEPT</td>
+<td dir="ltr">O</td>
+<td dir="ltr">X</td>
+<td dir="ltr">차집합 (표준), Oracle에서는 MINUS 사용</td>
+</tr>
+<tr>
+<td dir="ltr">MINUS</td>
+<td dir="ltr">X</td>
+<td dir="ltr">O</td>
+<td dir="ltr">차집합 (Oracle 전용)</td>
+</tr>
+</tbody>
+</table></div><div class="el-p"><p dir="auto">계층형쿼리<br>
+where이실행안하고전개부터하고필터링함<br>
+prior : 뒤에있는 것이 기준이됨, 기준은즉 부모가된다는거임<br>
+prior가 자식쪽에 붙어있으면 순방향임<br>
+상위메뉴가 이전의 메뉴id와 같은걸 connect한다<br>
+nocycle : 순환발생시 CONNECT_BY_ISCYCLE,CONNECT_BY_ISLEAF로 확인가능 둘다 맞으면 1아니면 0<br>
+전개쭉하다가 알게없으면 order sibings by 메뉴id가적용됨<br>
+connectby는 전개조건을 알려주는것</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>부모 = PRIOR 자식 이면 순방향</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>PRIOR 자식 = 부모 이면 순방향</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>자식 = PRIOR 부모 이면 역방향</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>PRIOR 부모 = 자식 이면 역방향<br>
+<span alt="assets/sqld-1748603470704.png" src="900-자격증/assets/sqld-1748603470704.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748603470704.png" src="900-자격증/assets/sqld-1748603470704.png" target="_self"></span></li>
+</ul></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">이름</th>
+<th dir="ltr">설명</th>
+<th dir="ltr">예시 사용법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr"><strong>LEVEL</strong></td>
+<td dir="ltr">현재 행의 계층 깊이(레벨)를 반환. 루트 노드는 1, 하위로 갈수록 1씩 증가.</td>
+<td dir="ltr"><code>SELECT LEVEL, ... FROM ... CONNECT BY ...</code></td>
+</tr>
+<tr>
+<td dir="ltr"><strong>CONNECT_BY_ROOT</strong></td>
+<td dir="ltr">현재 행의 최상위(루트) 부모 행의 컬럼 값을 반환.</td>
+<td dir="ltr"><code>SELECT CONNECT_BY_ROOT 컬럼명 FROM ... CONNECT BY ...</code></td>
+</tr>
+<tr>
+<td dir="ltr"><strong>CONNECT_BY_ISLEAF</strong></td>
+<td dir="ltr">현재 행이 리프 노드(자식이 없는 최하위 노드)면 1, 아니면 0 반환.</td>
+<td dir="ltr"><code>SELECT CONNECT_BY_ISLEAF FROM ... CONNECT BY ...</code></td>
+</tr>
+<tr>
+<td dir="ltr"><strong>SYS_CONNECT_BY_PATH</strong></td>
+<td dir="ltr">루트부터 현재 행까지의 경로를 지정한 구분자로 연결하여 반환.</td>
+<td dir="ltr"><code>SELECT SYS_CONNECT_BY_PATH(컬럼명, '/') FROM ... CONNECT BY ...</code></td>
+</tr>
+<tr>
+<td dir="ltr"><strong>CONNECT_BY_ISCYCLE</strong></td>
+<td dir="ltr">현재 행이 순환 구조(루프)에 속하면 1, 아니면 0 반환. NOCYCLE 옵션과 함께 사용.</td>
+<td dir="ltr"><code>SELECT CONNECT_BY_ISCYCLE FROM ... CONNECT BY NOCYCLE ...</code></td>
+</tr>
+</tbody>
+</table></div><div class="el-p"><p dir="auto">순서</p></div><div class="el-p"><p dir="auto"><span alt="assets/sqld-1748607157617.png" src="900-자격증/assets/sqld-1748607157617.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748607157617.png" src="900-자격증/assets/sqld-1748607157617.png" target="_self"></span></p></div><div class="el-p"><p dir="auto">내부적으로 and 외부적으로 or<br>
+<span alt="assets/sqld-1748607558752.png" src="900-자격증/assets/sqld-1748607558752.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748607558752.png" src="900-자격증/assets/sqld-1748607558752.png" target="_self"></span></p></div><div class="el-p"><p dir="auto">이런값이 있는가,패 턴 : LIKE사용 or 정규식</p></div><div class="el-p"><p dir="auto"><span alt="assets/sqld-1748615518024.png" src="900-자격증/assets/sqld-1748615518024.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748615518024.png" src="900-자격증/assets/sqld-1748615518024.png" target="_self"></span></p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>DDL : 테이블 정의(create alter drop truncate)</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>DML : 데이터조작 (select insert등)</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>DCL : 권환관련(grant revoke)</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>tcl : 트랜젝션 제어언어( commit rollback savepoint)</li>
+</ul></div><div class="el-p"><p dir="auto">distinct는 중복값 제거할때 사용   </p></div><div class="el-p"><p dir="auto"><code>count(*) == count(1) == count(2)</code> </p></div><div class="el-p"><p dir="auto"><code>DECODE(컬럼, 조건1, 결과1, 조건2, 결과2, ..., 기본값)</code><br>
+근데 애는 비교할ㄸ ㅐnull도 같은지 비교가됨</p></div><div class="el-p"><p dir="auto">case when : if-else, switch 같은것. 예외는 null로 치환됨<br>
+<span alt="assets/sqld-1748618940096.png" src="900-자격증/assets/sqld-1748618940096.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748618940096.png" src="900-자격증/assets/sqld-1748618940096.png" target="_self"></span><br>
+searched case가 다른연산자 사용가능하기에 확장성이높음</p></div><div class="el-p"><p dir="auto">자료형(n) : N자리수까지만 됨<br>
+varchar : 숫자넣어도 string으로 범위가 드감 ㅍ </p></div><div class="el-p"><p dir="auto">round(10.24231,1) : 10.2 </p></div><div class="el-p"><p dir="auto">EXISTS 구문<br>
+보통 SELECT 1 SELECT * 사용 (1 존재여부확인)<br>
+SELECT 컬럼1, 컬럼2, ...<br>
+FROM 테이블A<br>
+WHERE EXISTS (<br>
+SELECT 1<br>
+FROM 테이블B<br>
+WHERE 테이블B.조건 = 테이블A.조건<br>
+AND (추가조건이있다면 추가조건)<br>
+);</p></div><div class="el-h3"><h3 data-heading="" dir="auto" class="heading" id="_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span></h3></div><div class="el-p"><p dir="auto">부분 종속 :복합키일때 각 키마다 종속된 값들이 따로잇음<br>
+이행종속 : X &gt; Y &gt; Z 종속 보통 X가 키 Y,Z는 일반속성<br>
+<span alt="assets/sqld-1748488036803.png" src="900-자격증/assets/sqld-1748488036803.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748488036803.png" src="900-자격증/assets/sqld-1748488036803.png" target="_self"></span><span alt="assets/sqld-1748488170408.png" src="900-자격증/assets/sqld-1748488170408.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748488170408.png" src="900-자격증/assets/sqld-1748488170408.png" target="_self"></span><br>
+<span alt="assets/sqld-1748488203167.png" src="900-자격증/assets/sqld-1748488203167.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748488203167.png" src="900-자격증/assets/sqld-1748488203167.png" target="_self"></span>일반속성끼리 종속</p></div><div class="el-p"><p dir="auto">이상 : 정규화 수행하지않아서 생기는 현상<br>
+삽입,갱신삭제 이상이잇음</p></div><div class="el-h3"><h3 data-heading="식별자" dir="auto" class="heading" id="식별자_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>식별자</h3></div><div class="el-p"><p dir="auto">주,보조식별자 &amp; 본직,인조 식별자<br>
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://m.blog.naver.com/ilifo_book/223448187508?recommendTrackingCode=2" target="_self">https://m.blog.naver.com/ilifo_book/223448187508?recommendTrackingCode=2</a></p></div><div class="el-h4"><h4 data-heading="대표성 여부" dir="auto" class="heading" id="대표성_여부_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>대표성 여부</h4></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">구분</th>
+<th dir="ltr">설명</th>
+<th dir="ltr">예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr"><strong>주식별자</strong></td>
+<td dir="ltr">엔터티를 대표하는 식별자. 타 엔터티와 참조 관계 연결에 사용</td>
+<td dir="ltr">사원번호, 주문번호</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>보조식별자</strong></td>
+<td dir="ltr">엔터티 내에서 인스턴스를 구분할 수 있으나, 대표성이 없어 참조 관계에 주로 사용되지 않음</td>
+<td dir="ltr">주민등록번호(사원 엔터티에서)</td>
+</tr>
+</tbody>
+</table></div><div class="el-h4"><h4 data-heading="스스로 생성 여부" dir="auto" class="heading" id="스스로_생성_여부_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>스스로 생성 여부</h4></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">구분</th>
+<th dir="ltr">설명</th>
+<th dir="ltr">예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr"><strong>내부식별자</strong></td>
+<td dir="ltr">엔터티 내부에서 스스로 만들어지는 식별자</td>
+<td dir="ltr">사원번호, 주문번호</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>외부식별자</strong></td>
+<td dir="ltr">타 엔터티와의 관계를 통해 타 엔터티로부터 받아오는 식별자</td>
+<td dir="ltr">사원 엔터티의 부서번호(부서 엔터티 참조)</td>
+</tr>
+</tbody>
+</table></div><div class="el-h4"><h4 data-heading="속성의 수" dir="auto" class="heading" id="속성의_수_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>속성의 수</h4></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">구분</th>
+<th dir="ltr">설명</th>
+<th dir="ltr">예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr"><strong>단일식별자</strong></td>
+<td dir="ltr">하나의 속성으로 구성된 식별자</td>
+<td dir="ltr">사원번호, 주문번호</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>복합식별자</strong></td>
+<td dir="ltr">둘 이상의 속성으로 구성된 식별자</td>
+<td dir="ltr">주문상세 엔터티의 주문번호+상세순번</td>
+</tr>
+</tbody>
+</table></div><div class="el-h4"><h4 data-heading="대체 여부" dir="auto" class="heading" id="대체_여부_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>대체 여부</h4></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">구분</th>
+<th dir="ltr">설명</th>
+<th dir="ltr">예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr"><strong>본질식별자</strong></td>
+<td dir="ltr">업무에 의해 자연스럽게 만들어지는 식별자</td>
+<td dir="ltr">고객번호, 주문번호</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>인조식별자</strong></td>
+<td dir="ltr">원조식별자가 복잡해 인위적으로 만든 식별자(일련번호 등)</td>
+<td dir="ltr">주문번호(업무적으로 만들지 않고 일련번호로 대체)</td>
+</tr>
+</tbody>
+</table></div><div class="el-h4"><h4 data-heading="식별자 관계 여부" dir="auto" class="heading" id="식별자_관계_여부_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>식별자 관계 여부</h4></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">구분</th>
+<th dir="ltr">설명</th>
+<th dir="ltr">예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr"><strong>식별자 관계</strong></td>
+<td dir="ltr">부모 엔터티의 주식별자를 자식 엔터티의 주식별자로 상속받는 경우</td>
+<td dir="ltr">주문상세 엔터티가 주문 엔터티의 주문번호를 주식별자로 상속받는 경우</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>비식별자 관계</strong></td>
+<td dir="ltr">부모 엔터티의 주식별자를 자식 엔터티의 일반 속성으로만 사용하는 경우</td>
+<td dir="ltr">사원 엔터티의 부서번호(부서 엔터티 참조, 주식별자가 아님)</td>
+</tr>
+</tbody>
+</table></div><div class="el-p"><p dir="auto">IE 머시기 표현법 다시보기<br>
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://velog.io/@kw78999/DB-%EB%B0%94%EC%BB%A4%EC%99%80-IE-%ED%91%9C%EA%B8%B0%EB%B2%95" target="_self">https://velog.io/@kw78999/DB-%EB%B0%94%EC%BB%A4%EC%99%80-IE-%ED%91%9C%EA%B8%B0%EB%B2%95</a><br>
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://dbguide.tistory.com/entry/%EB%AA%A8%EB%8D%B8%EB%A7%81-IE-%ED%91%9C%EA%B8%B0%EB%B2%95" target="_self">https://dbguide.tistory.com/entry/%EB%AA%A8%EB%8D%B8%EB%A7%81-IE-%ED%91%9C%EA%B8%B0%EB%B2%95</a><br>
+<span alt="assets/sqld-1748586015540.png" src="900-자격증/assets/sqld-1748586015540.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748586015540.png" src="900-자격증/assets/sqld-1748586015540.png" target="_self"></span></p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>비식별자에 대해 맞는것
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>약한 연결 관계를 표현하고 있다.</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>엔터티 간의 관계를 점선으로 표현한다.</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>부모 쪽의 관계 참여가 선택적 관계이다.</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="null" dir="auto" class="heading" id="null_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>null</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>NULL과의 연산<br>
+단일행 연산 : sum(a+b+c)<br>
+ㄴ Null 값과의 연산 수행 결과를 Null<br>
+ex) 100 + Null = Null<br>
+다중행 연산 : sum(a)+sum(b)+sum(c)<br>
+ㄴ Null 값인 행을 제외하고 연산 수행<br>
+ex) 10, 20, Null, 30의 평균 = (10 + 20 + 30) / 3 = 20</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span><mark>null 은 비교(= &lt;= 같은..)가 안됨</mark> is로 확인가능</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>count 값은 null값이 제외된다<span height="315" alt="assets/sqld-1748631282689.png" src="900-자격증/assets/sqld-1748631282689.png" class="internal-embed media-embed image-embed is-loaded" target="_self" style="width: 346px; max-width: 100%;"><img alt="assets/sqld-1748631282689.png" height="315" src="900-자격증/assets/sqld-1748631282689.png" target="_self" style="width: 346px; max-width: 100%;"></span>
+<ul class="has-list-bullet">
+<li data-line="9" dir="auto"><span class="list-bullet"></span>이때 count가 3이됨</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="group by" dir="auto" class="heading" id="group_by_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>group by</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><strong>GROUP BY 절에 명시된 컬럼</strong><br>
+→ SELECT 절에서 직접 사용 가능</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><strong>집계 함수(COUNT, SUM, AVG, MIN, MAX 등)로 계산된 컬럼</strong><br>
+→ SELECT 절에서 사용 가능</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span><strong>GROUP BY에 없는 일반 컬럼</strong><br>
+→ SELECT 절에서 사용 불가(오류 발생)</li>
+</ul></div><div class="el-h4"><h4 data-heading="집계함수" dir="auto" class="heading" id="집계함수_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>집계함수</h4></div><div class="el-p"><p dir="auto">rollup cube groupingset<br>
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://for-my-wealthy-life.tistory.com/44" target="_self">https://for-my-wealthy-life.tistory.com/44</a></p></div><div class="el-h3"><h3 data-heading="권한부여 ,회수" dir="auto" class="heading" id="권한부여_,회수_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>권한부여 ,회수</h3></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">옵션</th>
+<th dir="ltr">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">WITH GRANT OPTION</td>
+<td dir="ltr">오브젝트 권한을 받은 사용자가 다른 사용자에게 권한을 줄 수 있음</td>
+</tr>
+<tr>
+<td dir="ltr">WITH ADMIN OPTION</td>
+<td dir="ltr">시스템 권한을 받은 사용자가 다른 사용자에게 권한을 줄 수 있음</td>
+</tr>
+<tr>
+<td dir="ltr">PUBLIC</td>
+<td dir="ltr">모든 사용자에게 권한을 부여할 때 사용</td>
+</tr>
+</tbody>
+</table></div><div class="el-p"><p dir="auto">부여<br>
+GRANT CREATE SESSION TO user1;<br>
+GRANT CREATE TABLE TO user1 WITH ADMIN OPTION;<br>
+회수<br>
+REVOKE SELECT ON employees FROM user1;<br>
+REVOKE CREATE SESSION FROM user1;</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>시스템 권한 (System Privileges)
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>데이터베이스 관리 및 운영에 필요한 권한</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>예:&nbsp;<code>CREATE USER</code>,&nbsp;<code>DROP USER</code>,&nbsp;<code>ALTER SYSTEM</code>,&nbsp;<code>CREATE TABLE</code>,&nbsp;<code>CREATE SESSION</code>&nbsp;등</li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>오브젝트 권한 (Object Privileges)
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>특정 데이터베이스 객체(테이블, 뷰, 시퀀스 등)에 대한 권한</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>예:&nbsp;<code>SELECT</code>,&nbsp;<code>INSERT</code>,&nbsp;<code>UPDATE</code>,&nbsp;<code>DELETE</code>,&nbsp;<code>EXECUTE</code>&nbsp;등</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="윈도우함수 정리" dir="auto" class="heading" id="윈도우함수_정리_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>윈도우함수 정리</h3></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">함수</th>
+<th dir="ltr">설명</th>
+<th dir="ltr">예시 결과 (동점 존재 시)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr"><strong>RANK</strong></td>
+<td dir="ltr">동일 값은 같은 순위로, 다음 값은 중복 개수만큼 건너뛰어 순위 부여</td>
+<td dir="auto">1, 2, 2, 4, 5, 5, 7</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>DENSE_RANK</strong></td>
+<td dir="ltr">동일 값은 같은 순위로, 다음 값은 순차적으로 순위 부여</td>
+<td dir="auto">1, 2, 2, 3, 4, 4, 5</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>ROW_NUMBER</strong></td>
+<td dir="ltr">동일 값도 고유한 순위 부여(중복 없음, 정렬 기준에 따라 순서 결정)</td>
+<td dir="auto">1, 2, 3, 4, 5, 6, 7</td>
+</tr>
+<tr>
+<td dir="ltr"><strong>NTILE</strong></td>
+<td dir="ltr">전체 데이터를 지정한 그룹(분위) 수로 균등 분할하여 그룹 번호 부여</td>
+<td dir="ltr">1, 1, 2, 2, 3, 3, 4 (4개 그룹 예시</td>
+</tr>
+</tbody>
+</table></div><div class="el-p"><p dir="auto">over() : 어떤기준으로 동작할건지<br>
+UNBOUNDED PRECEDING이 두번 사용할 . 수없다.</p></div><div class="el-pre"><pre><code data-line="0">윈도우함수(컬럼) OVER(
+    [PARTITION BY 컬럼]
+    [ORDER BY 컬럼]
+    [ROWS/RANGE BETWEEN 범위]
+)
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>
+<p>PARTITION : 그룹별로 순위가 부여된돠</p>
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>각각의 파티션영역안에서만 밖을침범하지않음</li>
+</ul>
+</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>
+<p>ROWS/RANGE BETWEEN </p>
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>rows : 물리정 행수를 기준 
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span><code>ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING</code><br>
+→ 현재 행의 바로 앞 1행, 현재 행, 현재 행의 바로 뒤 1행(총 3행) 범위</li>
+</ul>
+</li>
+<li data-line="6" dir="auto"><span class="list-bullet"></span>unbounded를 많이 사용함</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>UNBOUNDED PRECEDING : 범위 시작(첫행)</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>UNBOUNDED FOLLOWING :  범위 끝(막행3 )</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>range 끝을 안맺어도됨. 자동으로. end current row가들어감</li>
+</ul>
+</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>
+<p>top </p>
+<ul class="has-list-bullet">
+<li data-line="12" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>with ties를 쓸수 있음(동률)
+<ul class="has-list-bullet">
+<li data-line="13" dir="auto"><span class="list-bullet"></span>이때 orderby가 필수 </li>
+<li data-line="14" dir="auto"><span class="list-bullet"></span>4개뽑아라해도 5개나올수도잇음(동일한값잇으면)</li>
+</ul>
+</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span>rownum &lt; n 으로 대체가능</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="join" dir="auto" class="heading" id="join_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>join</h3></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th dir="ltr">조인 종류</th>
+<th dir="ltr">특징/설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td dir="ltr">INNER JOIN</td>
+<td dir="ltr">두 테이블에 모두 있는 데이터만 결과로 나옴</td>
+</tr>
+<tr>
+<td dir="ltr">LEFT OUTER JOIN</td>
+<td dir="ltr">왼쪽 테이블은 모두, 오른쪽은 조건 맞으면 붙음</td>
+</tr>
+<tr>
+<td dir="ltr">RIGHT OUTER JOIN</td>
+<td dir="ltr">오른쪽 테이블은 모두, 왼쪽은 조건 맞으면 붙음</td>
+</tr>
+<tr>
+<td dir="ltr">FULL OUTER JOIN</td>
+<td dir="ltr">양쪽 테이블 모두 다 나옴(조건 안 맞으면 NULL)</td>
+</tr>
+<tr>
+<td dir="ltr">CROSS JOIN</td>
+<td dir="ltr">모든 행을 곱해서 결과로 내보냄</td>
+</tr>
+<tr>
+<td dir="ltr">SELF JOIN</td>
+<td dir="ltr">같은 테이블을 두 번 조인</td>
+</tr>
+<tr>
+<td dir="ltr">NATURAL JOIN</td>
+<td dir="ltr">같은 이름의 컬럼으로 자동 조인</td>
+</tr>
+</tbody>
+</table></div><div class="el-p"><p dir="auto">crossjoin은 on안씀</p></div><div class="el-h3"><h3 data-heading="오라클" dir="auto" class="heading" id="오라클_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>오라클</h3></div><div class="el-p"><p dir="auto">outer join하는곳에 +를 둠<br>
+표준 &lt;-&gt; 오라클<br>
+on &lt;-&gt; where (조인기준)<br>
+where &lt;-&gt; where(일반조건)</p></div><div class="el-p"><p dir="auto">+없는방향 join<br>
+표준<br>
+SELECT * FROM A LEFT OUTER JOIN B ON A.a = B.a;</p></div><div class="el-p"><p dir="auto">오라클<br>
+SELECT *<br>
+FROM A, B<br>
+WHERE A.a = B.a(+);</p></div><div class="el-h3"><h3 data-heading="키 종류" dir="auto" class="heading" id="키_종류_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>키 종류</h3></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th>키 종류</th>
+<th>유일성</th>
+<th>최소성</th>
+<th>특징/설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>슈퍼키</td>
+<td>O</td>
+<td>X</td>
+<td>불필요한 속성 포함 가능</td>
+</tr>
+<tr>
+<td>후보키</td>
+<td>O</td>
+<td>O</td>
+<td>불필요한 속성 없음, 후보가 됨</td>
+</tr>
+<tr>
+<td>기본키</td>
+<td>O</td>
+<td>O</td>
+<td>후보키 중 하나, 대표 키</td>
+</tr>
+<tr>
+<td>복합키</td>
+<td>O</td>
+<td>O</td>
+<td>2개 이상 컬럼 조합, 후보키가 될 수 있음</td>
+</tr>
+<tr>
+<td>대체키</td>
+<td>O</td>
+<td>O</td>
+<td>후보키 중 기본키 아닌 것</td>
+</tr>
+</tbody>
+</table>
+</div><div class="el-p"><p dir="auto"><span alt="assets/sqld-1748631167466.png" src="900-자격증/assets/sqld-1748631167466.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748631167466.png" src="900-자격증/assets/sqld-1748631167466.png" target="_self"></span></p></div><div class="el-h3"><h3 data-heading="파티셔닝" dir="auto" class="heading" id="파티셔닝_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>파티셔닝</h3></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th>종류</th>
+<th>설명</th>
+<th>예시/특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>수평 파티셔닝</strong></td>
+<td>행(row) 단위로 데이터를 분할. 각 파티션은 같은 스키마를 가짐.</td>
+<td>고객ID, 날짜 등 기준으로 분할<a data-tooltip-position="top" aria-label="https://jh-labs.tistory.com/551" rel="noopener nofollow" class="external-link is-unresolved" href="https://jh-labs.tistory.com/551" target="_self">3</a><a data-tooltip-position="top" aria-label="https://dalichoi.tistory.com/entry/%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%84-%EC%9C%84%ED%95%9C-DB-%ED%8C%8C%ED%8B%B0%EC%85%94%EB%8B%9D" rel="noopener nofollow" class="external-link is-unresolved" href="https://dalichoi.tistory.com/entry/%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%84-%EC%9C%84%ED%95%9C-DB-%ED%8C%8C%ED%8B%B0%EC%85%94%EB%8B%9D" target="_self">6</a></td>
+</tr>
+<tr>
+<td><strong>수직 파티셔닝</strong></td>
+<td>컬럼(column) 단위로 데이터를 분할. 자주 사용하는 컬럼을 따로 분리해 성능 향상.</td>
+<td>보안/성능 목적, 스키마 분리<a data-tooltip-position="top" aria-label="https://jh-labs.tistory.com/551" rel="noopener nofollow" class="external-link is-unresolved" href="https://jh-labs.tistory.com/551" target="_self">3</a><a data-tooltip-position="top" aria-label="https://dalichoi.tistory.com/entry/%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%84-%EC%9C%84%ED%95%9C-DB-%ED%8C%8C%ED%8B%B0%EC%85%94%EB%8B%9D" rel="noopener nofollow" class="external-link is-unresolved" href="https://dalichoi.tistory.com/entry/%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%85%8C%EC%9D%B4%EB%B8%94%EC%9D%84-%EC%9C%84%ED%95%9C-DB-%ED%8C%8C%ED%8B%B0%EC%85%94%EB%8B%9D" target="_self">6</a></td>
+</tr>
+</tbody>
+</table>
+</div><div class="el-h4"><h4 data-heading="수평파티셔닝" dir="auto" class="heading" id="수평파티셔닝_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>수평파티셔닝</h4></div><div class="el-table" dir="ltr" style="overflow-x: auto;"><table>
+<thead>
+<tr>
+<th>기법</th>
+<th>설명</th>
+<th>예시/특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>범위 기반(Range)</strong></td>
+<td>특정 범위(예: 날짜, 숫자)를 기준으로 파티션 분할.</td>
+<td>2023년, 2024년 등 연도별 분할<a data-tooltip-position="top" aria-label="https://haileyjpark.tistory.com/7" rel="noopener nofollow" class="external-link is-unresolved" href="https://haileyjpark.tistory.com/7" target="_self">4</a></td>
+</tr>
+<tr>
+<td><strong>리스트 기반(List)</strong></td>
+<td>특정 값(예: 국가, 지역)을 기준으로 파티션 분할.</td>
+<td>국가별, 지역별 분할<a data-tooltip-position="top" aria-label="https://velog.io/@kyeun95/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B2%A0%EC%9D%B4%EC%8A%A4-%ED%8C%8C%ED%8B%B0%EC%85%94%EB%8B%9DPartitioning%EC%9D%B4%EB%9E%80" rel="noopener nofollow" class="external-link is-unresolved" href="https://velog.io/@kyeun95/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B2%A0%EC%9D%B4%EC%8A%A4-%ED%8C%8C%ED%8B%B0%EC%85%94%EB%8B%9DPartitioning%EC%9D%B4%EB%9E%80" target="_self">1</a></td>
+</tr>
+<tr>
+<td><strong>해시 기반(Hash)</strong></td>
+<td>해시 함수를 적용해 파티션 키의 값에 따라 무작위로 분할. 데이터가 골고루 분산됨.</td>
+<td>고객ID 해시값으로 4개 파티션 분할</td>
+</tr>
+</tbody>
+</table>
+</div><div class="el-p"><p dir="auto">리스트는 관리자가 직접지정한걸로 주기에 따라 쉽게 삭제가 불가</p></div><div class="el-h3"><h3 data-heading="엔티티 분류" dir="auto" class="heading" id="엔티티_분류_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>엔티티 분류</h3></div><div class="el-p"><p dir="auto"><span alt="assets/sqld-1748633545274.png" src="900-자격증/assets/sqld-1748633545274.png" class="internal-embed media-embed image-embed is-loaded" target="_self"><img alt="assets/sqld-1748633545274.png" src="900-자격증/assets/sqld-1748633545274.png" target="_self"></span></p></div><div class="el-h3"><h3 data-heading="모델링" dir="auto" class="heading" id="모델링_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>모델링</h3></div><div class="el-p"><p dir="auto">개념적 &gt;논리적 &gt; 물리적</p></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개념적 : 엔티티 , 속성 도출, 전사적차원
+<ul class="has-list-bullet">
+<li data-line="1" dir="auto"><span class="list-bullet"></span>높은추상화래밸</li>
+</ul>
+</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>논리적 : 정규화 ,식별자도출관계저으이
+<ul class="has-list-bullet">
+<li data-line="3" dir="auto"><span class="list-bullet"></span>재사용성 높음</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span>특정 db에 종속적</li>
+</ul>
+</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>물리적 : db구현가능하게</li>
+</ul></div><div class="el-h3"><h3 data-heading="스키마" dir="auto" class="heading" id="스키마_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>스키마</h3></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>외부 : 다중사용자뷰</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>개념 : 통합뷰, 설계자관점
+<ul class="has-list-bullet">
+<li data-line="2" dir="auto"><span class="list-bullet"></span>논리적 데이터 독립성보장</li>
+</ul>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span><span class="list-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>내부 : 개발자관점 , 디스크 저장구조
+<ul class="has-list-bullet">
+<li data-line="4" dir="auto"><span class="list-bullet"></span>물리적동립성 보장</li>
+</ul>
+</li>
+</ul></div><div class="el-h3"><h3 data-heading="피벗" dir="auto" class="heading" id="피벗_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>피벗</h3></div><div class="el-p"><p dir="auto"><a rel="noopener nofollow" class="external-link is-unresolved" href="https://m.blog.naver.com/PostView.naver?blogId=ilifo_book&amp;logNo=223461068051&amp;navType=by" target="_self">https://m.blog.naver.com/PostView.naver?blogId=ilifo_book&amp;logNo=223461068051&amp;navType=by</a></p></div><div class="el-h3"><h3 data-heading="프로시저" dir="auto" class="heading" id="프로시저_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>프로시저</h3></div><div class="el-p"><p dir="auto">sql(비절차적임) 을 절차적으로 사용하고 싶다. ==&gt;&gt;  프로시저</p></div><div class="el-p"><p dir="auto">Declare : 변수선언<br>
+Cursor : 메ㅔ모리 저장<br>
+Fetch : 한줄씩 꺼내쓰겟다<br>
+Close: 끝나고 해제 시켜줘야함 </p></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"><div id="right-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><label class="theme-toggle-container" for="theme-toggle-input" id=""><input class="theme-toggle-input" type="checkbox" id="theme-toggle-input"><div class="toggle-background"></div></label></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="right-sidebar-content" class="leaf-content"><div class="graph-view-wrapper"><div class="feature-header"><div class="feature-title">Interactive Graph</div></div><div class="graph-view-placeholder">
+		<div class="graph-view-container">
+			<div class="graph-icon graph-expand" role="button" aria-label="Expand" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+			<div class="graph-icon graph-global" role="button" aria-label="Global Graph" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-git-fork"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></div>
+			<canvas id="graph-canvas" class="hide" width="512px" height="512px"></canvas>
+		</div>
+		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item mod-collapsible" data-depth="1"><a class="tree-item-self is-clickable mod-collapsible" href="900-자격증/sqld.html#sqld_0" data-path="#sqld_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="sqld">sqld</div></a><div class="tree-item-children"><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#_0" data-path="#_0"><div class="tree-item-inner heading-link" heading-name=""></div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#식별자_0" data-path="#식별자_0"><div class="tree-item-inner heading-link" heading-name="식별자">식별자</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#대표성_여부_0" data-path="#대표성_여부_0"><div class="tree-item-inner heading-link" heading-name="대표성 여부">대표성 여부</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#스스로_생성_여부_0" data-path="#스스로_생성_여부_0"><div class="tree-item-inner heading-link" heading-name="스스로 생성 여부">스스로 생성 여부</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#속성의_수_0" data-path="#속성의_수_0"><div class="tree-item-inner heading-link" heading-name="속성의 수">속성의 수</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#대체_여부_0" data-path="#대체_여부_0"><div class="tree-item-inner heading-link" heading-name="대체 여부">대체 여부</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#식별자_관계_여부_0" data-path="#식별자_관계_여부_0"><div class="tree-item-inner heading-link" heading-name="식별자 관계 여부">식별자 관계 여부</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#null_0" data-path="#null_0"><div class="tree-item-inner heading-link" heading-name="null">null</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#group_by_0" data-path="#group_by_0"><div class="tree-item-inner heading-link" heading-name="group by">group by</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#집계함수_0" data-path="#집계함수_0"><div class="tree-item-inner heading-link" heading-name="집계함수">집계함수</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#권한부여_,회수_0" data-path="#권한부여_,회수_0"><div class="tree-item-inner heading-link" heading-name="권한부여 ,회수">권한부여 ,회수</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#윈도우함수_정리_0" data-path="#윈도우함수_정리_0"><div class="tree-item-inner heading-link" heading-name="윈도우함수 정리">윈도우함수 정리</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#join_0" data-path="#join_0"><div class="tree-item-inner heading-link" heading-name="join">join</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#오라클_0" data-path="#오라클_0"><div class="tree-item-inner heading-link" heading-name="오라클">오라클</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#키_종류_0" data-path="#키_종류_0"><div class="tree-item-inner heading-link" heading-name="키 종류">키 종류</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#파티셔닝_0" data-path="#파티셔닝_0"><div class="tree-item-inner heading-link" heading-name="파티셔닝">파티셔닝</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#수평파티셔닝_0" data-path="#수평파티셔닝_0"><div class="tree-item-inner heading-link" heading-name="수평파티셔닝">수평파티셔닝</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#엔티티_분류_0" data-path="#엔티티_분류_0"><div class="tree-item-inner heading-link" heading-name="엔티티 분류">엔티티 분류</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#모델링_0" data-path="#모델링_0"><div class="tree-item-inner heading-link" heading-name="모델링">모델링</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#스키마_0" data-path="#스키마_0"><div class="tree-item-inner heading-link" heading-name="스키마">스키마</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#피벗_0" data-path="#피벗_0"><div class="tree-item-inner heading-link" heading-name="피벗">피벗</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="900-자격증/sqld.html#프로시저_0" data-path="#프로시저_0"><div class="tree-item-inner heading-link" heading-name="프로시저">프로시저</div></a><div class="tree-item-children"></div></div></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>

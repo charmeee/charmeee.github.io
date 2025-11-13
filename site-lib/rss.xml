@@ -1,5 +1,317 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 31 at column 1175: Invalid bytes in character encoding
-</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[Mj's Brain]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>Mj's Brain</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 12 Oct 2025 12:31:52 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 12 Oct 2025 12:28:45 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[🏷️ 학교]]></title><description><![CDATA[학교 수업, 과제, 시험, 학업 관련 내용
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 313 at column 532: Invalid bytes in character encoding
+</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[Mj's Brain]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>Mj's Brain</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 13 Nov 2025 13:33:44 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 13 Nov 2025 13:32:38 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[빅분기 3유형_이론]]></title><description><![CDATA[np.log()p-value가 작을수록(예:&nbsp;0.05보다 작을 때) "이런 결과가 단순히 우연히 일어날 가능성은 매우 낮다"고 해석합니다. 그래서 보통 p-value가 0.05(5%)보다 작으면, 기존의 가정(귀무가설)을 기각하고, 연구자가 주장하는 대립가설을 채택합니
+귀무 : 일반적으로 ㅇㅈ하는가설
+대립: 연구자가 주장하는 가설
+p-value : 끝범위0.05 미만이면 대립가설채택
+검정할땐 같다! 가귀무
+모델에선 영향이없다! 가.귀무
+두집단사이의 분산이 같은지 확인하는 통계적 방법
+F &gt;= 1이 되도록 즉 더큰 놈을 분자로 두셈
+그룹1분산/그룹2분산
+양측검정 : 양쪽으로 극한값이 잇냐없냐
+<img alt="assets/빅분기 3유형-1750346821520.png" src="900-자격증/assets/빅분기-3유형-1750346821520.png" target="_self">
+먼저꺼 대립가설 채택
+귀무가설채택 <br>두집단의 평균이 통계적으로 유의하게 다른지 검정<img alt="assets/빅분기 3유형-1750347514162.png" src="900-자격증/assets/빅분기-3유형-1750347514162.png" target="_self">
+종류: 단일 표본 t-검정: 한 집단의 평균이 특정 값과 다른지 검정 t_statistic, p_value = stats.ttest_1samp(df['weights'], 120)
+독립표본 t-검정: 두 집단의 평균이 서로 다른지 검정 (다른약) stats.ttest_ind(data1, data2) 대응표본 t-검정: 동일 집단의 사전/사후 평균 차이 검정 (복용전후) stats.ttest_rel(before, after) 가설 방향 <br><img alt="assets/빅분기 3유형-1750347365035.png" src="900-자격증/assets/빅분기-3유형-1750347365035.png" target="_self">
+<br><img alt="assets/빅분기 3유형-1750347440411.png" src="900-자격증/assets/빅분기-3유형-1750347440411.png" target="_self"> 가정:&nbsp;정규분포, 등분산성 등이 필요합니다<br>
+<img alt="assets/빅분기 3유형-1750347608648.png" src="900-자격증/assets/빅분기-3유형-1750347608648.png" target="_self"> 두집단의 분산이 같다는 가정하에 두집단정보를 하나로 합처서 공통된 분산을 추정하는 것
+T-검정 계산할때 필요함(애도 등분산성을 가정함)
+두집단을 합처서 하나로묶어서 분산계산한다는말
+<br>공식<img alt="assets/빅분기 3유형-1750347244630.png" src="900-자격증/assets/빅분기-3유형-1750347244630.png" target="_self">
+]]></description><link>900-자격증/빅분기-3유형_이론.html</link><guid isPermaLink="false">900-자격증/빅분기 3유형_이론.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:30:23 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[빅분기 3유형]]></title><description><![CDATA[
+가설검정, 분산 분석, 카이제곱, 회귀, 로지스틱 회귀
+np exp &lt; -&gt; np log
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://velog.io/@imymemineyay/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-%EA%B8%B0%EC%82%AC-%EC%8B%A4%EA%B8%B0-%ED%86%B5%EA%B3%84" target="_self">https://velog.io/@imymemineyay/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D-%EA%B8%B0%EC%82%AC-%EC%8B%A4%EA%B8%B0-%ED%86%B5%EA%B3%84</a><br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://doitforus.tistory.com/132#%EB%8C%80%EC%9D%91%20%ED%91%9C%EB%B3%B8%20%EA%B2%80%EC%A0%95-1" target="_self">https://doitforus.tistory.com/132#%EB%8C%80%EC%9D%91%20%ED%91%9C%EB%B3%B8%20%EA%B2%80%EC%A0%95-1</a><br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://wikidocs.net/265436" target="_self">https://wikidocs.net/265436</a>import pandas as pd
+import numpy as np
+from scipy import stats
+import statsmodels.api as sm상관분석 : stats.pearsonr(simple['weight'],simple['height'])
+단일 표본 검정 (모집단 1개) 예) 과자의 무게는 200g과 다른지 검정
+① 정규성 검정 : shapiro(data)
+② 정규성 NO ) 비모수 검정 : wilcoxon(data - 기대값)
+② 정규성 YES ) 단일 표본 검정 : ttest_1samp(data, 기대값) 대응 표본 검정 (모집단-같은 집단 2개) 예) 신약 효과 (전후) 검정
+①&nbsp;정규성 검정 : shapiro(data1 - data2)
+② 정규성 NO ) 비모수 검정 : wilcoxon(data1, data2)
+② 정규성 YES ) 단일 표본 검정 : ttest_rel(data1, data2) 독립 표본 검정 (모집단) 예) 1반과 2반의 성적 차이 검정
+① &nbsp;정규성 검정 : shapiro(data1), shapiro(data2) → 둘다 만족해야함
+② 정규성 NO ) 비모수 검정 : mannwhitneyu(data1, data2)
+② 정규성 YES ) 등분산 검정 : levene(data1, data2)
+③ 등분산 NO ) 독립 표본 검정 : ttest_ind(data1, data2, equal_var = False)
+③ 등분산 YES ) 독립표본 검정 : ttest_ind(data1, data2) # 기본 : 양측검정 : 평균이 같냐다르냐
+# alternative # 1) two-sided: 대립가설의 내용이 서로 틀리다라고 주장할 때 사용. 양측 검정
+# 2) less: 대립가설의 내용이, a &lt; b 라고 주장할 때 사용. 단측 검정
+# 3) greater: 대립가설의 내용이 a &gt; b 라고 주장할 때 사용. 단측 검정 # 검정통계량, p-value
+## t-검정
+# 단일
+t_stat, p_value = stats.ttest_1samp(df['weights'], 120)
+# p_value &lt; 0.05 : 평균이 120이랑다름
+# 독립
+t_stat, p_value = stats.ttest_ind(data1, data2)
+# p_value &lt; 0.05 : 평균이 둘이다름
+# 대응
+st, pv = stats.ttest_rel(a, b)
+# p_value &lt; 0.05 : 평균이 둘이다름 ## f- 검정
+f_stat, p_value = stats.f_oneway(group1, group2, group3)
+# p_value &lt; 0.05 : 평균 분산차이 유의미 ## 비모수검정
+stats.wilcoxon(df['before'], df['after'], alternative = "less") 변수 선택, 회귀계수 해석, 예측값 산출, 성능평가(R², 오분류율 등)
+COEF(회귀계수, regression coefficient)은 회귀분석에서 각 독립변수가 종속변수에 미치는 영향의 크기를 나타내는 값 coefficients = result.params[1:] # 상수항 제외
+odds_ratios = np.exp(coefficients) odds_ratio = np.exp(coef_high)
+statsmodels.api 에서 param인자로 알수잇음
+z-score : 어떤 데이터가 전체 평균에서 얼마나 떨어져 있는지를 "표준편차 단위"로 나타내는 값 절댓값이 클수록(0에서 멀수록) 좋다
+P&gt;|t| : p-value임 0.05 미만 : 변수가 종속변수에 통계적으로 유의미한 영향을줌 std err= 표준 오차 작을수록 굳
+misclassification rate (오분류 샘플 수) / (전체 샘플 수) <br><img alt="assets/빅분기 3유형-1750458321998.png" src="900-자격증/assets/빅분기-3유형-1750458321998.png" target="_self">from statsmodels.formula.api import logit
+model = logit('disease ~ age + bmi', data=df).fit()
+print(model.summary()) import statsmodels.api as sm X = sm.add_constant(df[['age', 'bmi']]) # 상수항 직접 추가 y = df['disease'] model = sm.Logit(y, X).fit() print(model.summary()) result = np. exp(coef1)
+print(round(result, 1))
+# 방법2) Statsmodels 라이브러리의 Logit 함수 적용
+import statsmodels.api as sm
+train_x_const = sm. add_constant(train_x)
+model = sm. Logit(train_y, train_x_const) .fit(
+# 상수항 추가
+# disp=0 옵션 사용 시 모델 학습 결과
+coef1 = model params [ income ']
+import numpy as np
+result = np. exp(coef1)
+print(round (result, 1))
+# 방법3) statsmodels 라이브러리의 GLM 함수 적용
+import statsmodels.api as sm
+# train_x_const = sm.add_constant(train_x)
+# 상수항 추가
+model = sm.GLM(train_y, train_x_const, family=sm.families.Binomial)).fit()
+Log-Likelihood = llf
+로그우도(모델 적합도), 절대값이 작을수록 적합도가 높음
+Df Residuals:&nbsp;997
+잔차 자유도(1000 - 3, Intercept 포함)
+높을수록조음용
+LLR p-value:&nbsp;1.984e-15
+전체 모델의 유의성 검정, p&lt;0.05이므로 모델이 통계적으로 유의함
+Pseudo R-squ.:&nbsp;0.04996
+의사결정계수(로지스틱 회귀의 설명력, 0.05로 낮은 편) 회귀분석(다중, 로지스틱): 까지 연습 필요.
+import statsmodels.api as sm
+glm_binom = sm.GLM(y, X, family=sm.families.Binomial())
+result = glm_binom.fit()
+print(result.summary()) 잔차 이탈도, deviance 등 GLM에서만 제공되는 지표를 물을 때 예: "잔차 이탈도를 구하시오", "모델의 deviance 값을 해석하시오" 시험 문제에서 "일반화 선형모형" 또는 "GLM"이라는 단어가 직접적으로 언급될 때
+정확하진 않지만 제가 강의 들었을 때는 logit은 summary에 잔차이탈도가 안나오는데 glm은 나와서 잔차이탈도 구할때만 glm을 썼어요!
+즉,&nbsp;Deviance:: ㅌ잔차이탈도 = 각 관측치의 실제값과 예측값이 얼마나 다른지, 이탈도 관점에서 측정한 값입니다.
+chi
+카이제곱 검정: 교차표, 기대빈도, 카이제곱 통계량, p-value 해석 등 실전 계산 연습 필요.
+두변수가 독립인지import numpy as np
+from scipy.stats import chi2_contingency # 교차표(관측 빈도)
+# 흡연 비흡연
+# 남자 30 20
+# 여자 10 40
+data = np.array([[30, 20], [10, 40]]) # 카이제곱 검정 실행
+chi2_stat, p_value, dof, expected = chi2_contingency(data) print(f"카이제곱 통계량: {chi2_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+print(f"자유도: {dof}")
+print("기대빈도표:")
+print(expected) # 해석
+alpha = 0.05
+if p_value &lt; alpha: print("귀무가설 기각: 두 변수는 독립이 아님(연관 있음)")
+else: print("귀무가설 채택: 두 변수는 독립임(연관 없음)") 이론적 분포와의 비교from scipy.stats import chisquare # 관측 빈도 (예: 6면 주사위 60번 던짐)
+observed = [8, 9, 10, 11, 12, 10]
+# 기대 빈도 (공정하다면 각 면이 10번씩 나와야 함)
+expected = [10, 10, 10, 10, 10, 10] chi2_stat, p_value = chisquare(f_obs=observed, f_exp=expected) print(f"카이제곱 통계량: {chi2_stat:.4f}")
+print(f"p-value: {p_value:.4f}") if p_value &lt; 0.05: print("귀무가설 기각: 주사위는 공정하지 않음")
+else: print("귀무가설 채택: 주사위는 공정함") import pandas as pd
+from scipy import stats
+import statsmodels.api as sm
+import numpy as np
+# Index(['Resistin', 'Classification'], dtype='object')
+df = pd.read_csv("data/bcc.csv") group1 = df[df['Classification']==1]['Resistin']
+group2 = df[df['Classification']==2]['Resistin'] g1 = np.log(group1)
+g2 = np.log(group2) n1 = len(g1) - 1
+n2 = len(g2) - 1 print(stats.f_oneway(g1,g2))
+print(stats.ttest_ind(g1,g2)) sum_var = (np.var(g1)*n1 + np.var(g2)*n2)/(n1+n2)
+print(sum_var)
+# print(dir(stats)) # 해당 화면에서는 제출하지 않으며, 문제 풀이 후 답안제출에서 결괏값 제출 &gt; F_onewayResult(statistic=9.172465158846453, pvalue=0.003039226943143336)
+TtestResult(statistic=-3.0286077921788537, pvalue=0.0030392269431433142, df=114.0)
+0.4413710541719135 <br><img alt="assets/빅분기 3유형-1750450078055.png" src="900-자격증/assets/빅분기-3유형-1750450078055.png" target="_self"># 데이터 불러오기
+# 독립변수: satisfaction, salary_level, project_count, working_hours # 종속변수: left_company (퇴사 여부: 0 = 재직, 1 = 퇴사) # salary_level은 범주형 변수이며, 기준 수준(reference level)은 low로 설정합니다.
+import pandas as pd
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+df = pd.read_csv('/kaggle/input/bigdatacertificationkr/employee_attrition.csv')
+df.head()
+y= df['left_company']
+x= df.drop(columns = ['left_company'])
+x['salary_level'] = pd.Categorical( x['salary_level'], categories=['low', 'medium', 'high'], # **첫 번째 요소('low')를 참조 수준**으로 자동 설정 ordered=False
+)
+x = pd.get_dummies(x,drop_first=True, dtype=int) # print(help(sm.Logit))
+x_const = sm.add_constant(x)
+print(x_const.head())
+model = sm.Logit(y,x_const).fit()
+model.summary() # 문제 2-1: satisfaction 회귀계수
+coef_satisfaction = model.params['satisfaction']
+rounded_coef = round(coef_satisfaction, 3)
+print(f"문제 2-1: satisfaction 회귀계수 = {rounded_coef}") # 문제 2-2: salary_level=high 오즈비
+coef_high = model.params['salary_level_high']
+odds_ratio = np.exp(coef_high)
+rounded_odds = round(odds_ratio, 3)
+print(f"문제 2-2: high vs low 오즈비 = {rounded_odds}") # 문제 2-3: 정밀도 계산
+y_pred_prob = model.predict(x_const)
+y_pred = (y_pred_prob &gt;= 0.5).astype(int)
+precision = precision_score(y, y_pred)
+rounded_precision = round(precision, 3)
+print(f"문제 2-3: 정밀도 = {rounded_precision}")
+# satisfaction
+# 1. -2.8436 문제 2-1: satisfaction 회귀계수 = -2.844
+문제 2-2: high vs low 오즈비 = 0.099
+문제 2-3: 정밀도 = 0.622from scipy.stats import chi2_contingency ## 교차표가 필요함
+table = pd.crosstab(df['Gender'],df['Survived'])
+chi2_contingency(table)
+stat , p ,df ,expect = chi_contingency(table)
+print(round(stat,3)) # 2번 from statsmodels.api import Logit
+from sklearn.preprocessing import LabelEncoder
+import statsmodels.api as sm encoder = LabelEncoder
+df[ 'Gender'] = encoder.fit_transform(df[ 'Gender' ]) X = df[['Gender', 'SibSp', 'Parch', 'Fare']] X = sm.add_constant (X) y = df[ 'Survived' ] model = Logit (y, X) results = model. fit() print(results.summary))
+import numpy as np print(round(p. exp(-0.3539))
+]]></description><link>900-자격증/빅분기-3유형.html</link><guid isPermaLink="false">900-자격증/빅분기 3유형.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:30:23 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[빅분기 2유형]]></title><description><![CDATA[
+이진분류, 다중분류, 회귀, 평가지표\
+import pandas as pd train = pd.read_csv("data/customer_train.csv")
+test = pd.read_csv("data/customer_test.csv") # 일단회귀임
+## 1. 데이터확인
+# print(train.head())
+# print(test.head())
+# ['회원ID', '총구매액', '최대구매액', '환불금액', '주구매상품', '주구매지점', '방문일수', '방문당구매건수', '주말방문비율', '구매주기']
+# print(train.info()) ## 2. y값 분리
+train_y = train["총구매액"]
+train_x = train.drop(['총구매액', '회원ID'], axis=1)
+test_x = test.drop(['회원ID'], axis=1) ## 3. 결측치 처리
+# 내생각엔 2가지방법 결측치가많으니깐 1. 환불이 없다, 환불컬럼을아예지운다정도
+train_x['환불금액'] = train_x['환불금액'].fillna(0)
+test_x['환불금액'] = test_x['환불금액'].fillna(0) ## 4. 수치형데이터,범주형데이터 인코딩
+from sklearn.preprocessing import LabelEncoder
+# 수치형은 MinMaxScaler보통쓰면됨 랜덤포래스트쓴다면안해두됨
+le = LabelEncoder()
+object_cols = train_x.select_dtypes(include="object").columns
+# test데이터에 예외값이잇는지확인
+# 만약예외값이있다면 기타항목을 넣어야함
+for col in object_cols: # print(set(test_x[col])-set(train_x[col])) train_x[col] = le.fit_transform(train_x[col]) test_x[col] = le.transform(test_x[col]) ## 5. 데이터 분류
+from sklearn.model_selection import train_test_split
+x_tra,x_val,y_tra,y_val = train_test_split(train_x,train_y,test_size=0.2)
+print(x_tra.shape,x_val.shape,y_tra.shape,y_val.shape) ## 6. 모델학습
+from sklearn.ensemble import RandomForestRegressor
+model = RandomForestRegressor()
+model.fit(x_tra,y_tra)
+# 검증데이터 예측
+y_val_pre = model.predict(x_val) ## 7. 검증데이터의 예측값과 실제값으로 모델성능확인
+# 분류면 f1스코어보겟쥬?
+from sklearn.metrics import root_mean_squared_error,r2_score
+# print(help(root_mean_squared_error))
+rmse = root_mean_squared_error(y_val,y_val_pre)
+r2 = r2_score(y_val,y_val_pre)
+print(rmse,r2) ## 8. 문제서 요구하는 test데이터값예측 후 결과저장
+y_test_pre=model.predict(test_x)
+print(y_test_pre) # 1차원 numpy
+y_test_pre = pd.DataFrame(y_test_pre,columns=['pred'])
+print(y_test_pre.head())
+y_test_pre.to_csv('result.csv',index=False) ## 9. 확인
+print(pd.read_csv('result.csv').head()) 기본적으로 이부분 사용
+<a class="internal-link" data-href="ASSO 대비.md" href="900-자격증/asso-대비.html" target="_self" rel="noopener nofollow">ASSO 대비</a>from sklearn.processing import LabelEncoder,StandardScaler,MinMaxScaler,RobustScaler from sklearn.model_selection import train_test_split
+asso때는 y,x(타겟과 특성을 먼저 분리햇는데)
+애넨 테스트셋부터분리를 하네??import pandas as pd # 예시 데이터프레임
+df1 = pd.DataFrame({'key': ['A', 'B', 'C'], 'value1': [1, 2, 3]})
+df2 = pd.DataFrame({'key': ['B', 'C', 'D'], 'value2': [4, 5, 6]}) # key 컬럼을 기준으로 가로로 합치기 (inner join)
+merged = pd.merge(df1, df2, on='key', how='inner')
+print(merged) 분류모델쓸때 (하위 함수,속성은 sklearn의 분류모델의 인스턴스에 잇는것임)
+predict_proba():&nbsp;각 클래스별 확률 반환 (분류 모델에서만 사용)
+predict:&nbsp;가장 확률 높은 클래스(최종 예측값) 반환
+classes_ : 인식한&nbsp;고유((한 클래스(레이블) 값들의 리스트
+from sklearn.metrics import 어쩌고들
+roc_auc_score 용도: 주로 이진분류에서&nbsp;모델의 클래스 구분 능력을 0~1 사이 점수로 평가. 다중분류에서 쓰려면 따로 설정 필요 계산: ROC 곡선(TPR vs FPR) 아래 면적. 1: 완벽한 분류, 0.5: 랜덤 추측 수준. 특징 predict_proba()로 얻은 확률값 사용.
+불균형 데이터셋에서도 신뢰성 있음.\ confusion_matrix 주로히트멥이랑같이사용
+sns.heatmap(
+cm,
+annot =True # 각 셀에 값 표시
+fmt = 'd', # 정수형으로 표시
+cmap = 'Blues' # 색상
+) accuracy_score : 정확도 용도: 전체 예측 중 올바른 예측 비율 계산. 계산: 주의: 클래스 불균형 시 신뢰도 떨어짐 (예: 99% Negative 데이터에서 전부 Negative로 예측 → 99% 정확도). f1_score 정밀도(Precision)와 재현율(Recall)의 조화 평균
+0-1 사이, 1일수록 성능 좋음
+불균형 데이터도 어느정도 ㄱㅊ classification_report precision recall f1-score support
+support : 해당 클래스의 실제 데이터 개수
+accuracy: 전체 데이터 중 맞춘 비율 (전체 정확도)
+macro avg: 각 클래스의 지표(precision, recall, f1)를&nbsp;단순 평균 클래스 불균형이 심할 때 소수 클래스도 동등하게 반영 weighted avg: 각 클래스의&nbsp;샘플 수로 가중 평균 전체 데이터 비율을 반영, 클래스가 많은 쪽이 더 큰 영향 precision_score : 정밀도 mean_squared_error 용도: 예측값과 실제값의 평균 제곱 오차 측정.
+계산: 특징: 큰 오차에 높은 패널티 (제곱 효과). 단위가 실제값과 다름 RMSE 사용 권장. rmse = mse ** 0.5 mean_absolute_error 용도 : 예측값과 실제값의 평균 절대 오차 측정. 계산: 특징 : - 이상치 영향을 덜 받음. - 단위가 실제값과 동일해 해석 용이. r2_score : "결정계수" 또는 "설명력" 용도: 모델이 데이터 분산을 얼마나 설명하는지 평가. 계산: 범위: - 1: 완벽 예측, 0: 평균 예측 수준, 음수: 모델이 평균보다 나쁨. mean_squared_log_error MSLE, 평균 제곱 로그 오차
+이상치(outlier)에 덜 민감
+음수 값이 있으면 사용 불가
+이것도 보통 루트해서 사용 <br><img alt="assets/빅분기 2유형-1750431767097.png" src="900-자격증/assets/빅분기-2유형-1750431767097.png" target="_self">rf = RandomForestClassifier(random_state=0) f1_scores = cross_val_score(rf, train, target, cv=3, scoring='f1_macro') print(f1_scores.mean()) scoring 기본값 분류(Classification) : accuracy (정확도)
+회귀(Regression) 모델 : r2 (결정계수, R-squared) pred = model.predict(test)
+submit = pd.DataFrame({'pred':pred})
+submit.to_csv("result.csv", index=False)
+]]></description><link>900-자격증/빅분기-2유형.html</link><guid isPermaLink="false">900-자격증/빅분기 2유형.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:30:22 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[빅분기 1유형]]></title><description><![CDATA[
+파이썬, 판다스
+# 함수기억안날때
+print(help(df.dropna))
+print(dir(df)) # 이게가지고잇는 속성과 함수를 볼수잇음
+# 상관관계(피처간의)
+df.corr(numeric_only=True) # 시리즈를 데이터프레임으로 .to_frame()
+# 멀티인덱스의 시리즈접근
+value = s[('US', 'Pinot Noir')] # 값 종류, 종류수
+.unique() .nunique() df.drop("시즌", axis=0, inplace=True) # axis는 0이 기본이고 이건 가로를 의미함
+df.to_csv('cafe2.csv', index=False) # 인덱스포함하지않겟다 # 인덱스 기준 (기본값 ascending=True)
+df.sort_index(ascending=False) # 값기준 정렬 걍 컬럼이름만 잇어도됨
+df.sort_values(['가격', '메뉴'],ascending=[False, True], inplace=True) # 인덱스 새로 만들기 drop=True
+df.reset_index(drop=True) # [] 안에조건이 나오면 그냥이조건이 만족하는 행을구하는것임
+df[df['칼로리'] &lt; 50] # 조건만족하는 행
+df['A'] # 컬럼만 선택
+# 조건연산자도 가능
+df[cond1 &amp; cond2]
+df[cond1 | cond2]
+cond = df['메뉴'].isin(['녹차'])
+df[cond] # 값변경
+change = {'룽고':'아메리카노', '그린티':'녹차'} # {이전값:새값}
+df.replace(change, inplace=True) # 값이 완전히 일치해여험
+df['A'] = df['A'].str.replace('분석', '시각화') # string에서 값교체하는것과같음(부분교체가능)
+# str붙는순간 널문자열로대하겟다
+df['A'].str.split()
+df['A'].str.contains('기본')
+str.lower() str.upper() # 시리즈값확인
+menu = pd.Series(['맛난버거 세트', '매운 치킨버거', '더블 치즈버거'])
+menu.isin(['맛난버거 세트', '더블 치즈버거']) # 통계
+print("최대값: ",df['가격'].max())
+print("최소값: ",df['가격'].min())
+print("평균값: ",df['가격'].mean())
+print("중앙값: ",df['가격'].median())
+print("합계: ",df['가격'].sum())
+print("표준편차: ",df['가격'].std())
+print("분산: ",df['가격'].var())
+print("최빈값: ",df['원산지'].mode()[0]) #최빈값이 여러개일 수도 있으니까!!
+print("최빈값의 인덱스: ",df['가격'].idxmax()) # 분위수
+print("분위수 25% 값", df['가격'].quantile(.25))
+print("분위수 75% 값", df['가격'].quantile(.75))
+cond = df['가격'].quantile(.25) &gt; df['가격']
+df[cond] # melt 여러개칼람을하나의 칼람으로 합침
+# id_vars : 유지될 칼럼, value_vars 합처질 칼럼
+# 기본값은 각각 'variable', 'value'입니다.
+# 원래 컬럼이 name, math, eng, kor가 잇으면
+pd.melt(df, id_vars=['Name'])
+# 이러면 variable의 값으로(math,eng,kor)가 생김 # 그루핑 (sql생각하면될듯)
+# 원두와 할인율 기준, 평균
+df.groupby(['원산지']).mean(numeric_only=True) # 사진확인
+ndf = df.groupby(['원산지', '메뉴']).agg(['mean', 'sum']) # 이렇게 되면 멀티인덱스됨
+# groupby , agg안에꺼가 다 인덱스됨
+# agg여러집계함수동시적용 # 시계열데이터
+df['DateTime2'] = pd.to_datetime(df['DateTime2'], format='%Y-%m-%d %H-%M-%S')
+df['year'] = df['DateTime1'].dt.year # month, day, hour, minute, second
+df['DateTime1'].dt.dayofweek # 요일 0: 월요일'
+df['DateTime1'].dt.to_period('Y') # Y : 연도, Q : 분기(yyyyQn) , M : yyyy-mm , D : yyyy-mm-dd ,H: 2024-06-16 13:00
+# 시간차이로 계싼가능 뒤에다 s붙여야함
+day = pd.Timedelta(days=99)
+df['100day'] = df['DateTime4'] + day # 병합
+full_menu = pd.concat([appetizer, main], axis=1) # 수평
+full_menu = pd.concat([appetizer, main], ignore_index=True) # 기본 0(수직으로 병합)
+# 두 데이터프레임을 'Menu'를 기준으로 병합 (innerjoin)
+menu_info = pd.merge(price, cal, on='Menu') # count, size (행개수새는거)
+# count &lt; 결측치 제외 , size &lt; 결측치포함 # groupby
+reviews.groupby(['price']).max(numeric_only=True)
+reviews.groupby('price')['points'].max().sort_index()
+# 애는 point기준으로 집계 # apply
+def func(row): # row는 Series, 행 전체 정보 사용 가능 return row['A'] + row['B'] df['new_col'] = df.apply(func, axis=1) # map
+import pandas as pd df = pd.DataFrame({'col': ['A', 'B', 'C', 'A']}) mapping = {'A': 2, 'B': 0, 'C': 1} df['col_encoded'] = df['col'].map(mapping) print(df)
+group
+<img alt="assets/빅분기 1유형-1750076194068.png" src="900-자격증/assets/빅분기-1유형-1750076194068.png" target="_self">]]></description><link>900-자격증/빅분기-1유형.html</link><guid isPermaLink="false">900-자격증/빅분기 1유형.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Thu, 13 Nov 2025 13:30:22 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[sqld]]></title><description/></item><item><title><![CDATA[🏷️ 학교]]></title><description><![CDATA[학교 수업, 과제, 시험, 학업 관련 내용
 <a class="internal-link" data-href="../../700-컴퓨터과학/OS-1" href=".html" target="_self" rel="noopener nofollow">OS-1)컴퓨터 시스템</a>컴퓨터%20시스템.md)
 <br><a class="internal-link" data-href="../../700-컴퓨터과학/OS-2" href=".html" target="_self" rel="noopener nofollow">OS-2) 운영체제 기본과 구조</a>%20운영체제%20기본과%20구조.md)
 <br><a class="internal-link" data-href="../../700-컴퓨터과학/OS-3" href=".html" target="_self" rel="noopener nofollow">OS-3) 운영체제 연산</a>%20운영체제%20연산.md)
@@ -29,7 +341,7 @@
 <br><a class="internal-link" data-href="../../300-백엔드개발/전정프 - 12장 restapi.md" href="300-백엔드개발/전정프-12장-restapi.html" target="_self" rel="noopener nofollow">전정프 - 12장 restapi</a>
 ]]></description><link>99-settings/2-index/🏷️-학교.html</link><guid isPermaLink="false">99-Settings/2-Index/🏷️ 학교.md</guid><pubDate>Sun, 12 Oct 2025 12:20:30 GMT</pubDate></item><item><title><![CDATA[home]]></title><description><![CDATA[MJ's Brain
 지식을 체계화하기 위해 정리해 나가고 있습니다.
-큰 토픽별로 분류 각 폴더로 분류 되어있습니다. 학교 수업 내용 정리 <a class="internal-link" data-href="99-Settings/2-Index/🏷️ 학교.md" href="99-settings/2-index/🏷️-학교.html" target="_self" rel="noopener nofollow">🏷️ 학교</a> 프로젝트 별 분류 <br><a class="internal-link" data-href="99-Settings/1-Topics/📖 800 프로젝트.md" href="99-settings/1-topics/📖-800-프로젝트.html" target="_self" rel="noopener nofollow">📖 800 프로젝트</a> <br>이 이전에 썼던 blog : <a rel="noopener nofollow" class="external-link is-unresolved" href="https://mj-hope.tistory.com/?page=4" target="_self">https://mj-hope.tistory.com/?page=4</a>]]></description><link>home.html</link><guid isPermaLink="false">home.md</guid><pubDate>Sun, 12 Oct 2025 12:18:02 GMT</pubDate></item><item><title><![CDATA[b_틱택톡_7682]]></title><link>600-알고리즘-&amp;-코딩테스트/problem/b_틱택톡_7682.html</link><guid isPermaLink="false">600-알고리즘 &amp; 코딩테스트/problem/b_틱택톡_7682.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Fri, 10 Oct 2025 14:46:10 GMT</pubDate></item><item><title><![CDATA[python]]></title><description/></item><item><title><![CDATA[이벤트브로커 메세지브로커, 무엇이 다를까]]></title><description><![CDATA[이벤트와 메세지 브로커를 이해하기전에 브로커가 멀까? 왜 생겨났을까브로커는 한국말로 중개인이다. 즉 통신 사이에 하나의 중개자를 둬서 처리한다는 것이다.
+큰 토픽별로 분류 각 폴더로 분류 되어있습니다. 학교 수업 내용 정리 <a class="internal-link" data-href="99-Settings/2-Index/🏷️ 학교.md" href="99-settings/2-index/🏷️-학교.html" target="_self" rel="noopener nofollow">🏷️ 학교</a> 프로젝트 별 분류 <br><a class="internal-link" data-href="99-Settings/1-Topics/📖 800 프로젝트.md" href="99-settings/1-topics/📖-800-프로젝트.html" target="_self" rel="noopener nofollow">📖 800 프로젝트</a> <br>이 이전에 썼던 blog : <a rel="noopener nofollow" class="external-link is-unresolved" href="https://mj-hope.tistory.com/?page=4" target="_self">https://mj-hope.tistory.com/?page=4</a>]]></description><link>home.html</link><guid isPermaLink="false">home.md</guid><pubDate>Sun, 12 Oct 2025 12:18:02 GMT</pubDate></item><item><title><![CDATA[b_틱택톡_7682]]></title><link>600-알고리즘-&amp;-코딩테스트/problem/b_틱택톡_7682.html</link><guid isPermaLink="false">600-알고리즘 &amp; 코딩테스트/problem/b_틱택톡_7682.md</guid><dc:creator><![CDATA[Jeon MinJi]]></dc:creator><pubDate>Fri, 10 Oct 2025 14:46:10 GMT</pubDate></item><item><title><![CDATA[이벤트브로커 메세지브로커, 무엇이 다를까]]></title><description><![CDATA[이벤트와 메세지 브로커를 이해하기전에 브로커가 멀까? 왜 생겨났을까브로커는 한국말로 중개인이다. 즉 통신 사이에 하나의 중개자를 둬서 처리한다는 것이다.
 이렇게 처리하면 각 시스템의 결합도를 낮추고 비동기적으로 실행가능하다이미지 출처 : 얄팍한 코딩사전
 <img alt="이벤트브로커 메세지브로커-1758572666903.png" src="700-컴퓨터과학/assets/이벤트브로커-메세지브로커-1758572666903.png" target="_self">이벤트와 메세지의 차이를 그림으로 표현해 보았다.<br>
 <img alt="이벤트브로커 메세지브로커, 무엇이 다를까-1758593841643.png" src="700-컴퓨터과학/assets/이벤트브로커-메세지브로커,-무엇이-다를까-1758593841643.png" target="_self">
@@ -781,7 +1093,7 @@ f.next(); // 'middle'
 f.next(); // 'end' 위 예제에서 foo 함수는 제너레이터 함수입니다. 이 함수에는 console.log를 사용해 'start', 'middle', 'end'를 출력하는 코드가 있습니다. f 변수에는 foo 함수를 호출한 결과가 할당되며, f.next()를 호출하면 foo 함수가 실행됩니다. 그리고 yield 문에서 멈춥니다. 이후 f.next()를 다시 호출하면, foo 함수가 이전 위치에서 다시 실행되며, 다음 yield 문에서 멈춥니다. 이를 통해 함수의 실행 흐름을 세밀하게 제어할 수 있습니다.마지막으로, 제너레이터 함수는 무한한 시퀀스를 생성할 수 있습니다. 이를 통해 메모리 사용을 최적화할 수 있습니다. 아래는 제너레이터 함수를 사용한 무한한 시퀀스 생성 예제입니다.function* infiniteSequence() { let num = 0; while (true) { yield num++; }
 } const generator = infiniteSequence(); console.log(generator.next().value); // 0
 console.log(generator.next().value); // 1
-console.log(generator.next().value); // 2 위 예제에서 infiniteSequence 함수는 제너레이터 함수입니다. 이 함수는 무한한 시퀀스를 생성하며, while 문과 함께 사용되어 끝없는 시퀀스를 생성합니다. generator 변수에는 infiniteSequence 함수를 호출한 결과가 할당되며, 이 변수를 사용해 시퀀스를 생성할 수 있습니다. generator.next()는 시퀀스에서 다음 값을 가져옵니다. 이를 통해 0, 1, 2와 같은 값을 생성할 수 있습니다.위와 같이 제너레이터 함수는 ES6 이후 자바스크립트에서 많이 사용되고 있으며, 여러 가지 장점을 갖고 있습니다. 이를 통해 비동기 처리를 더욱 쉽게 구현하고, 실행 흐름을 더욱 세밀하게 제어할 수 있으며, 무한한 시퀀스를 생성할 수 있습니다.]]></description><link>200-웹개발/js-제너레이터.html</link><guid isPermaLink="false">200-웹개발/JS-제너레이터.md</guid><pubDate>Sun, 21 Sep 2025 08:18:54 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[prototype]]></title><description><![CDATA[<img src="200-웹개발/assets/prototype.png" target="_self">]]></description><link>200-웹개발/assets/prototype.html</link><guid isPermaLink="false">200-웹개발/assets/prototype.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/prototype.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/prototype.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[property2]]></title><description><![CDATA[<img src="200-웹개발/assets/property2.png" target="_self">]]></description><link>200-웹개발/assets/property2.html</link><guid isPermaLink="false">200-웹개발/assets/property2.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/property2.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/property2.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[property1]]></title><description><![CDATA[<img src="200-웹개발/assets/property1.png" target="_self">]]></description><link>200-웹개발/assets/property1.html</link><guid isPermaLink="false">200-웹개발/assets/property1.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/property1.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/property1.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[datatype4]]></title><description><![CDATA[<img src="200-웹개발/assets/datatype4.png" target="_self">]]></description><link>200-웹개발/assets/datatype4.html</link><guid isPermaLink="false">200-웹개발/assets/datatype4.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/datatype4.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/datatype4.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[datatype3]]></title><description><![CDATA[<img src="200-웹개발/assets/datatype3.png" target="_self">]]></description><link>200-웹개발/assets/datatype3.html</link><guid isPermaLink="false">200-웹개발/assets/datatype3.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/datatype3.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/datatype3.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[datatype2]]></title><description><![CDATA[<img src="200-웹개발/assets/datatype2.png" target="_self">]]></description><link>200-웹개발/assets/datatype2.html</link><guid isPermaLink="false">200-웹개발/assets/datatype2.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/datatype2.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/datatype2.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[datatype1]]></title><description><![CDATA[<img src="200-웹개발/assets/datatype1.png" target="_self">]]></description><link>200-웹개발/assets/datatype1.html</link><guid isPermaLink="false">200-웹개발/assets/datatype1.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/datatype1.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/datatype1.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐8]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐8.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐8.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐8.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐8.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐8.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐7]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐7.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐7.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐7.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐7.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐7.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐6]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐6.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐6.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐6.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐6.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐6.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐5]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐5.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐5.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐5.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐5.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐5.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐4]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐4.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐4.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐4.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐4.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐4.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐3]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐3.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐3.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐3.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐3.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐3.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐2]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐2.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐2.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐2.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐2.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐2.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[이벤트루프의_여러가지큐1]]></title><description><![CDATA[<img src="200-웹개발/assets/이벤트루프의_여러가지큐1.png" target="_self">]]></description><link>200-웹개발/assets/이벤트루프의_여러가지큐1.html</link><guid isPermaLink="false">200-웹개발/assets/이벤트루프의_여러가지큐1.png</guid><pubDate>Sun, 21 Sep 2025 08:17:25 GMT</pubDate><enclosure url="200-웹개발/assets/이벤트루프의_여러가지큐1.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="200-웹개발/assets/이벤트루프의_여러가지큐1.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[JS-this]]></title><description><![CDATA[
+console.log(generator.next().value); // 2 위 예제에서 infiniteSequence 함수는 제너레이터 함수입니다. 이 함수는 무한한 시퀀스를 생성하며, while 문과 함께 사용되어 끝없는 시퀀스를 생성합니다. generator 변수에는 infiniteSequence 함수를 호출한 결과가 할당되며, 이 변수를 사용해 시퀀스를 생성할 수 있습니다. generator.next()는 시퀀스에서 다음 값을 가져옵니다. 이를 통해 0, 1, 2와 같은 값을 생성할 수 있습니다.위와 같이 제너레이터 함수는 ES6 이후 자바스크립트에서 많이 사용되고 있으며, 여러 가지 장점을 갖고 있습니다. 이를 통해 비동기 처리를 더욱 쉽게 구현하고, 실행 흐름을 더욱 세밀하게 제어할 수 있으며, 무한한 시퀀스를 생성할 수 있습니다.]]></description><link>200-웹개발/js-제너레이터.html</link><guid isPermaLink="false">200-웹개발/JS-제너레이터.md</guid><pubDate>Sun, 21 Sep 2025 08:18:54 GMT</pubDate><enclosure url="." length="0" type="false"/><content:encoded>&lt;figure&gt;&lt;img src="."&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[JS-this]]></title><description><![CDATA[
 자신이 속한 객체 또는 생성할 인스턴트를 가리키는 자기 참조 변수.
 호출될 때 동적으로 값이 결정된다.
 생성자 함수에서는 this 가 추후 생성될 인스턴스에 바인딩됨.function Circle(radius){ this.radius = radius; this.getDiameter = function (){ return 2 * this.radius; }
